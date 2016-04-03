@@ -1,3 +1,5 @@
+#include <DualMC33926MotorShield.h>
+
 const int PWM=5;            //Pin5 PWM
 const int DISPENSE=12;      //Pin12 DISPENSE
 const int AMD1=35;          //Motor A1 orientation
