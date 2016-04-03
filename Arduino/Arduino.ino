@@ -38,3 +38,10 @@ void loop() {
   
 
 }
+
+
+void dispense() {                   //Dispense Caramel
+digitalWrite(DISPENSE, HIGH);       //Set voltage of pin 12 to high
+delay (500);                        //Delay by 1/2 of a second ~500 ms.
+
+}
