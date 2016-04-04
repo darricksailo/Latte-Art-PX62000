@@ -53,13 +53,13 @@ void setup()
 
 void loop()
 {
+  // setSpeeds(int m1Speed, int m2Speed)
+  md.setSpeeds(0, 0);                             // Set both motors to stop moving
   // wait for the push button to be pressed before we start the printing
   waitForGo();
 
-  // setSpeeds(int m1Speed, int m2Speed)
   // Motor 1 = x direction
   // Motor 2 = y direction
-  md.setSpeeds(0, 0);                             // Set both motors to stop moving
   motor_x_direction = "right";                    // Using a string to let us know which direction motor is moving
   motor_y_direction = "down";
 
