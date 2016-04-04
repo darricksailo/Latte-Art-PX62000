@@ -106,7 +106,7 @@ void loop()
       // since we are drawing the image zigzag
       if (x_index == 0)
         motor_x_direction = "right";
-      else if (x_index == width)
+      else if (x_index == (width - 1))
         motor_x_direction = "left";
     }
 
