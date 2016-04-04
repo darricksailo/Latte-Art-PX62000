@@ -56,7 +56,9 @@ void loop()
   // setSpeeds(int m1Speed, int m2Speed)
   md.setSpeeds(0, 0);                             // Set both motors to stop moving
   // wait for the push button to be pressed before we start the printing
+  Serial.println("Waiting for the button to be pressed before printing starts");
   waitForGo();
+  Serial.println("Printing is starting");
 
   // Motor 1 = x direction
   // Motor 2 = y direction
@@ -68,10 +70,19 @@ void loop()
   {
     for (int j = 0; j < width; j++)
     {
+      Serial.print(x_index);
+      Serial.print(" , ");
+      Serial.print(i);
       // if look up table is 1, activate the dispenser
       if (pictureMatrix[x_index][i] == 1)
       {
         dispense();
+        Serial.print("\t");
+        Serial.println("DISPENSE");
+      }
+      else
+      {
+        Serial.println();
       }
 
       // increment or decrement the look up table x_index depending on motor direction
@@ -95,7 +106,7 @@ void loop()
       // since we are drawing the image zigzag
       if (x_index == 0)
         motor_x_direction = "right";
-      else if (x_index == 300)
+      else if (x_index == width)
         motor_x_direction = "left";
     }
 
@@ -104,13 +115,15 @@ void loop()
     delay(100);
     md.setM2Speed(0);
   }
+  Serial.println("Printing Completed");
 }
 
 // *** Waiting for the GO signal *** //
 void waitForGo()
 {
+  delay(100);
   goValue = digitalRead(goPin);     // Read go pin value
-  while (goPin == HIGH)
+  while (goValue == 1)
   {
     delay(100);                     // Wait 100 ms before checking go pin value again
     goValue = digitalRead(goPin);   // Re-read go pin value
@@ -120,6 +133,7 @@ void waitForGo()
 // *** Dispense Caramel *** //
 void dispense()
 {
+  delay(100);
   digitalWrite(DISPENSE, HIGH);   // Set voltage of output pin to high to activate dispenser
   delay (100);                    // Dispense liquid for only 100 ms
   digitalWrite(DISPENSE, LOW);    // Stop dispensing liquid
