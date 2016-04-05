@@ -113,6 +113,7 @@ void loop()
     md.setM2Speed(200);
     delay(200);
     md.setM2Speed(0);
+    delay(100);
   }
   Serial.println("Printing Completed");
 }
@@ -136,6 +137,7 @@ void dispense()
   digitalWrite(DISPENSE, HIGH);   // Set voltage of output pin to high to activate dispenser
   delay(100);                    // Dispense liquid for only 100 ms
   digitalWrite(DISPENSE, LOW);    // Stop dispensing liquid
+  delay(100);
 }
 
 /*
