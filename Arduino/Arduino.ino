@@ -90,17 +90,16 @@ void loop()
       if (motor_x_direction == "right")
       {
         x_index++;
-        md.setM1Speed(100);
-        delay(100);
-        md.setM1Speed(0);
+        md.setM1Speed(200);
       }
       else if (motor_x_direction == "left")
       {
         x_index--;
-        md.setM1Speed(-100);
-        delay(100);
-        md.setM1Speed(0);
+        md.setM1Speed(-200);
       }
+      delay(200);
+      md.setM1Speed(0);
+      delay(100);
 
       // if we reach the end of the picture, change motor direction
       // since we are drawing the image zigzag
@@ -111,8 +110,8 @@ void loop()
     }
 
     // move the y direction motor down 1 "pixel"
-    md.setM2Speed(100);
-    delay(100);
+    md.setM2Speed(200);
+    delay(200);
     md.setM2Speed(0);
   }
   Serial.println("Printing Completed");
@@ -135,7 +134,7 @@ void dispense()
 {
   delay(100);
   digitalWrite(DISPENSE, HIGH);   // Set voltage of output pin to high to activate dispenser
-  delay (100);                    // Dispense liquid for only 100 ms
+  delay(100);                    // Dispense liquid for only 100 ms
   digitalWrite(DISPENSE, LOW);    // Stop dispensing liquid
 }
 
