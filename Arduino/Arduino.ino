@@ -256,6 +256,11 @@ void loop()
     md.setM2Speed(0);
     delay(100);
   }
+  // move motors back to initial position
+  md.setM2Speed(-200);
+  delay(2500);
+  md.setM2Speed(0);
+  delay(100);
   Serial.println(F("Printing Completed"));
 }
 
