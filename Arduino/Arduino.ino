@@ -3,9 +3,9 @@
 #include <avr/pgmspace.h>
 
 DualMC33926MotorShield md;
-const int goPin = 2;    // Pin 2 to start printing
+const int goPin = 7;    // Pin 7 to enable dispenser motor driver
 int goValue = 1;
-const int DISPENSE = 3; // Pin 3 for dispensing
+const int DISPENSE = 5; // Pin 5 for dispensing
 const int height = 50;
 const int width = 50;
 int x_index = 0;
@@ -133,15 +133,18 @@ void setup()
 
   // initialize pin modes and timer 1 for dual motor driver
   md.init();
+  // setSpeeds(int m1Speed, int m2Speed)
+  md.setSpeeds(0, 0);                             // Set both motors to stop moving
 
-  //pinMode(goPin, INPUT);
+  pinMode(goPin, OUTPUT);
   pinMode(DISPENSE, OUTPUT);
+  digitalWrite(goPin, LOW);
+  analogWrite(DISPENSE, 0);
 }
 
 void loop()
 {
-  // setSpeeds(int m1Speed, int m2Speed)
-  md.setSpeeds(0, 0);                             // Set both motors to stop moving
+  digitalWrite(goPin, LOW);
   // wait for the push button to be pressed before we start the printing
   Serial.println(F("Waiting for input to start printing. Type 'print'"));
   String startInput = "";
@@ -165,6 +168,7 @@ void loop()
     }
   }
 
+  digitalWrite(goPin, HIGH);
   if (selection == '1')
     Serial.println(F("*** Printing square ***"));
   else if (selection == '2')
@@ -204,8 +208,6 @@ void loop()
         {
           tableValue = pgm_read_byte_near(&pictureSquareMatrix[x_index][i]);
           dispense();
-          Serial.print(F("\t"));
-          Serial.println(F("DISPENSE"));
         }
         else
         {
@@ -219,8 +221,6 @@ void loop()
         {
           tableValue = pgm_read_byte_near(&pictureAppleMatrix[x_index][i]);
           dispense();
-          Serial.print(F("\t"));
-          Serial.println(F("DISPENSE"));
         }
         else
         {
@@ -292,10 +292,12 @@ void waitForGo()
 void dispense()
 {
   delay(50);
-  digitalWrite(DISPENSE, HIGH);   // Set voltage of output pin to high to activate dispenser
+  analogWrite(DISPENSE, 240);   // Set voltage of output pin to high to activate dispenser
   delay(50);                    // Dispense liquid for only 100 ms
-  digitalWrite(DISPENSE, LOW);    // Stop dispensing liquid
+  analogWrite(DISPENSE, 0);    // Stop dispensing liquid
   delay(50);
+  Serial.print(F("\t"));
+  Serial.println(F("DISPENSE"));
 }
 
 /*
