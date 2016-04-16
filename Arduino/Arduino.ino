@@ -3,9 +3,7 @@
 #include <avr/pgmspace.h>
 
 DualMC33926MotorShield md;
-const int goPin = 7;    // Pin 7 to enable dispenser motor driver
-int goValue = 1;
-const int DISPENSE = 5; // Pin 5 for dispensing
+const int DISPENSE = 3; // Pin 3 controls dispensing motor
 const int height = 50;
 const int width = 50;
 int x_index = 0;
@@ -136,15 +134,12 @@ void setup()
   // setSpeeds(int m1Speed, int m2Speed)
   md.setSpeeds(0, 0);                             // Set both motors to stop moving
 
-  pinMode(goPin, OUTPUT);
   pinMode(DISPENSE, OUTPUT);
-  digitalWrite(goPin, LOW);
-  analogWrite(DISPENSE, 0);
+  digitalWrite(DISPENSE, LOW);
 }
 
 void loop()
 {
-  digitalWrite(goPin, LOW);
   // wait for the push button to be pressed before we start the printing
   Serial.println(F("Waiting for input to start printing. Type 'print'"));
   String startInput = "";
@@ -167,8 +162,7 @@ void loop()
       selection = Serial.read();
     }
   }
-
-  digitalWrite(goPin, HIGH);
+  
   if (selection == '1')
     Serial.println(F("*** Printing square ***"));
   else if (selection == '2')
@@ -230,6 +224,7 @@ void loop()
       }
       else
       {
+        tableValue = 0;
         Serial.println();
       }
 
@@ -276,67 +271,14 @@ void loop()
   Serial.println(F("Printing Completed"));
 }
 
-// *** Waiting for the GO signal *** //
-void waitForGo()
-{
-  delay(100);
-  goValue = digitalRead(goPin);     // Read go pin value
-  while (goValue == 1)
-  {
-    delay(100);                     // Wait 100 ms before checking go pin value again
-    goValue = digitalRead(goPin);   // Re-read go pin value
-  }
-}
-
 // *** Dispense Caramel *** //
 void dispense()
 {
   delay(50);
-  analogWrite(DISPENSE, 240);   // Set voltage of output pin to high to activate dispenser
-  delay(50);                    // Dispense liquid for only 100 ms
-  analogWrite(DISPENSE, 0);    // Stop dispensing liquid
+  digitalWrite(DISPENSE, HIGH);
+  delay(50);
+  digitalWrite(DISPENSE, LOW);
   delay(50);
   Serial.print(F("\t"));
   Serial.println(F("DISPENSE"));
 }
-
-/*
-  const int PWM=5;            //Pin5 PWM
-  const int DISPENSE=12;      //Pin12 DISPENSE
-  const int AMD1=35;          //Motor A1 orientation
-  const int AMD2=36;          //Motor A2 orientation
-  const int BMD1=6;           //Motor B1 orientation
-  const int BMD2=7;           //Motor B2 orientation
-
-
-  //Motor Functions:
-  //AMD1: || AMD2:  || PWM: || Mode:
-  //  L   ||  H     || H    || CCW
-  //  H   ||  L     || H    || CW
-  //  L   ||  L     || H/L  || Stop
-  //  H   ||  H     || H/L  || Stop
-
-
-
-
-  void setup() {
-  // put your setup code here, to run once:
-  pinMode(PWM, OUTPUT);
-  pinMode(DISPENSE, OUTPUT);
-
-
-
-
-
-
-  }
-
-
-  void loop() {
-  // put your main code here, to run repeatedly:
-  int Speed = 255;
-
-
-
-  }
-*/
