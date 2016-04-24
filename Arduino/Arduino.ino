@@ -6,7 +6,7 @@ DualMC33926MotorShield md;
 const int DISPENSE = 3; // Pin 3 controls dispensing motor
 const int height = 25;
 const int width = 25;
-int x_index = 0;
+int y_index = 0;
 int motorSpeed = 200;
 String motor_x_direction;
 String motor_y_direction;
@@ -42,35 +42,35 @@ const boolean pictureSquareMatrix[width][height] PROGMEM = {
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 };
 
-//HOLLOW HEART
-const boolean pictureCircleMatrix[width][height] PROGMEM = {
+//TRIANGLE
+const boolean pictureEMatrix[width][height] PROGMEM = {
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0}, 
+  {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0}, 
+  {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0}, 
+  {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
+  {0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0}, 
+  {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0}, 
+  {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
+  {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-  {0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0}, 
-  {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0}, 
-  {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0}, 
-  {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0}, 
-  {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-  {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0}, 
-  {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-  {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-  {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, 
-  {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-  {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0}, 
-  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-  {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-  {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0}, 
-  {0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0}, 
-  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-};
-
+  {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1} 
+  };
+  
 void setup()
 {
   // initialize serial connection at 115,200 bits/sec or 14,400 bytes/sec
@@ -117,7 +117,7 @@ void loop()
 
   Serial.println(F("Enter 1 or 2: "));
   Serial.println(F("1. Square"));
-  Serial.println(F("2. Heart"));
+  Serial.println(F("2. E"));
   char selection;
   while ((selection != '1') && (selection != '2'))
   {
@@ -130,7 +130,7 @@ void loop()
   if (selection == '1')
     Serial.println(F("*** Printing square ***"));
   else if (selection == '2')
-    Serial.println(F("*** Printing heart ***"));
+    Serial.println(F("*** Printing circle ***"));
   delay(1000);
 
   //waitForGo();
@@ -141,7 +141,7 @@ void loop()
   motor_x_direction = "right";                    // Using a string to let us know which direction motor is moving
   motor_y_direction = "down";
 
-  x_index = 0;
+  y_index = 0;
   for (int i = 0; i < height; i++)
   {
     for (int j = 0; j < width; j++)
@@ -149,19 +149,18 @@ void loop()
       // makes sure we move to the next line properly
       // for example, (24,0) becomes (24,1) and not (25,1) or (23, 1)
       // and (0,1) becomes (0,2) and not (1,2)
-      if (x_index == -1)
-        x_index = 0;
-      if (x_index == width)
-        x_index = width - 1;
+      if (y_index == -1)
+        y_index = 0;
+      if (y_index == width)
+        y_index = width - 1;
 
-      Serial.print(x_index);
-      Serial.print(F(" , "));
       Serial.print(i);
+      Serial.print(F(" , "));
+      Serial.print(y_index);
       // if look up table is 1, activate the dispenser
-      if (selection == '1')
-      {
-        if (pgm_read_byte_near(&pictureSquareMatrix[x_index][i]))
-        //if (pictureSquareMatrix[x_index][i] == 1)
+      if (selection == '1')      {
+        if (pgm_read_byte_near(&pictureSquareMatrix[i][y_index]))
+        //if (pictureSquareMatrix[i][y_index] == 1)
         {
             tableValue = 1;
             dispense();
@@ -174,8 +173,8 @@ void loop()
       }
       else if (selection == '2')
       {
-        if (pgm_read_byte_near(&pictureCircleMatrix[x_index][i]))
-        //if (pictureCircleMatrix[x_index][i] == 1)
+        if (pgm_read_byte_near(&pictureEMatrix[i][y_index]))
+        //if (pictureEMatrix[i][y_index] == 1)
         {
             tableValue = 1;
             dispense();
@@ -192,19 +191,19 @@ void loop()
         Serial.println();
       }
 
-      // increment or decrement the look up table x_index depending on motor direction
+      // increment or decrement the look up table y_index depending on motor direction
       // move x direction motor right or left by 1 "pixel"
       if (motor_x_direction == "right")
       {
-        x_index++;
+        y_index++;
         md.setM1Speed(motorSpeed);
       }
       else if (motor_x_direction == "left")
       {
-        x_index--;
+        y_index--;
         md.setM1Speed(-motorSpeed);
       }
-      delay(50);
+      delay(100);
        
       if (tableValue == 1)
       {
@@ -214,22 +213,25 @@ void loop()
 
       // if we reach the end of the picture, change motor direction
       // since we are drawing the image zigzag
-      if (x_index == -1)
+      if (y_index == -1)
         motor_x_direction = "right";
-      else if (x_index == width)
+      else if (y_index == width)
         motor_x_direction = "left";
     }
 
     // move the y direction motor down 1 "pixel"
     md.setM2Speed(motorSpeed);
-    delay(100);
+    delay(150);
     md.setM2Speed(0);
     delay(100);
   }
   // move motors back to initial position
+  md.setM1Speed(-motorSpeed);
+  delay(2500);
   md.setM1Speed(0);
+  delay(100);
   md.setM2Speed(-motorSpeed);
-  delay(5000);
+  delay(3750);
   md.setM2Speed(0);
   delay(100);
   Serial.println(F("Printing Completed"));
@@ -240,7 +242,7 @@ void dispense()
 {
   delay(50);
   digitalWrite(DISPENSE, HIGH);
-  delay(25);
+  delay(50);
   digitalWrite(DISPENSE, LOW);
   delay(50);
   Serial.println(F("\tDISPENSE"));
