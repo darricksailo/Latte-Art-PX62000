@@ -242,7 +242,7 @@ void dispense()
 {
   delay(50);
   digitalWrite(DISPENSE, HIGH);
-  delay(50);
+  delay(250);
   digitalWrite(DISPENSE, LOW);
   delay(50);
   Serial.println(F("\tDISPENSE"));
