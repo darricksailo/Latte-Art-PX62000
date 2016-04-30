@@ -12,7 +12,7 @@ namespace ConvertToBlackAndWhite
 {
     public partial class AboutWindow : Form
     {
-        string[] about1 = new string[5];
+        string[] about1 = new string[6];
         StringBuilder about = new StringBuilder();
         public AboutWindow()
         {
@@ -23,6 +23,7 @@ namespace ConvertToBlackAndWhite
 
         private void showdescription()
         {
+            about1[5] = "v1.3.1\t04/30/16\r\n\u2022 Added try-catch statements to hopefully prevent all unhandled exceptions\r\n\r\n";
             about1[4] = "v1.3.0\t02/19/16\r\n\u2022 Completely revamped how image processing is done\r\n\u2022 Image processing is up to 7 times faster!\r\n\u2022 Total run time is up to 3 times faster\r\n\u2022 Removed multithreading image processing\r\n\u2022 Fixed a bug where saving an image and trying to process the same image again would cause an unhandled exception\r\n\u2022 Changed version numbers from 1.0.x to 1.x to indicate versions with significant improvements\r\n\r\n";
             about1[3] = "v1.2.0\t02/17/16\r\n\u2022 Fixed an unhandled exception error when minimizing the window due to GUI scaling implementation\r\n\u2022 Significant speed improvements:\r\n\t\u2022 Multithreaded image processing!\r\n\t\u2022 No more delay when rendering the text\r\n\tbox!\r\n\u2022 Changed text box background color to a tinted white color for those that are read-only\r\n\u2022 Properly disabled word wrapping\r\n\r\n";
             about1[2] = "v1.1.1\t02/13/16\r\n\u2022 Further improved text box rendering time\r\n\r\n";

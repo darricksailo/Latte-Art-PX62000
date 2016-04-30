@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ConvertToBlackAndWhite.exe" size="53760">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ConvertToBlackAndWhite.exe" size="54272">
       <assemblyIdentity name="ConvertToBlackAndWhite" version="1.3.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Zmea0j7gOFxLXvDKqWkpE2mood6iPEomd7aMfjbnDik=</dsig:DigestValue>
+        <dsig:DigestValue>UoVoZPnuQZAZqkPukemf0D9ejLbhcdS3pnPm+bgprBg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

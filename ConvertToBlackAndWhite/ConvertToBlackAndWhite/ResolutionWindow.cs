@@ -21,27 +21,34 @@ namespace ConvertToBlackAndWhite
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            string pxtemp;
-            pxtemp = pxTextBox.Text;
-            var match = Regex.IsMatch(pxtemp, @"^\d+$");
-
-            if (match)
+            try
             {
-                if (Int32.Parse(pxtemp) > 2000)
+                string pxtemp;
+                pxtemp = pxTextBox.Text;
+                var match = Regex.IsMatch(pxtemp, @"^\d+$");
+
+                if (match)
                 {
-                    MessageBox.Show("Please enter a smaller integer number", "Value Too Large!");
-                    pxTextBox.SelectAll();
+                    if (Int32.Parse(pxtemp) > 2000)
+                    {
+                        MessageBox.Show("Please enter a smaller integer number", "Value Too Large!");
+                        pxTextBox.SelectAll();
+                    }
+                    else
+                    {
+                        MainWindow.resolution = Int32.Parse(pxtemp);
+                        this.Dispose();
+                    }
                 }
                 else
                 {
-                    MainWindow.resolution = Int32.Parse(pxtemp);
-                    this.Dispose();
+                    MessageBox.Show("Please enter a valid integer number", "Error!");
+                    pxTextBox.SelectAll();
                 }
             }
-            else
+            catch (Exception error)
             {
-                MessageBox.Show("Please enter a valid integer number", "Error!");
-                pxTextBox.SelectAll();
+                MessageBox.Show(error.ToString());
             }
         }
 
@@ -52,13 +59,20 @@ namespace ConvertToBlackAndWhite
 
         private void pxTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            try
             {
-                submitButton_Click(sender, e);
+                if (e.KeyCode == Keys.Enter)
+                {
+                    submitButton_Click(sender, e);
+                }
+                else if (e.KeyCode == Keys.Escape)
+                {
+                    this.Dispose();
+                }
             }
-            else if (e.KeyCode == Keys.Escape)
+            catch (Exception error)
             {
-                this.Dispose();
+                MessageBox.Show(error.ToString());
             }
         }
 

@@ -55,7 +55,7 @@
             this.versionTextBox.Name = "versionTextBox";
             this.versionTextBox.Size = new System.Drawing.Size(34, 15);
             this.versionTextBox.TabIndex = 1;
-            this.versionTextBox.Text = "1.3.0";
+            this.versionTextBox.Text = "1.3.1";
             // 
             // authorTextBox
             // 
@@ -104,7 +104,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 472);
+            this.ClientSize = new System.Drawing.Size(344, 471);
             this.Controls.Add(this.changeLogLabel);
             this.Controls.Add(this.descriptionLabel);
             this.Controls.Add(this.changeLog);
