@@ -7,7 +7,7 @@ const int DISPENSE = 3; // Pin 3 controls dispensing motor
 const int height = 25;
 const int width = 25;
 int y_index = 0;
-int motorSpeed = 200;
+int motorSpeed = 110;
 String motor_x_direction;
 String motor_y_direction;
 byte tableValue = 0;
@@ -43,7 +43,7 @@ const boolean pictureSquareMatrix[width][height] PROGMEM = {
 };
 
 //TRIANGLE
-const boolean pictureEMatrix[width][height] PROGMEM = {
+const boolean pictureTriangleMatrix[width][height] PROGMEM = {
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
@@ -108,16 +108,24 @@ void loop()
     else if (startInput == "dispense")
     {
       Serial.println(startInput);
-      for (int i = 0; i < 10; i++)
+      for (int i = 0; i < 50; i++)
       {
         dispense();
+      }
+    }
+    else if (startInput == "superdispense")
+    {
+      Serial.println(startInput);
+      for (int i = 0; i < 100; i++)
+      {
+        superdispense();
       }
     }
   }
 
   Serial.println(F("Enter 1 or 2: "));
   Serial.println(F("1. Square"));
-  Serial.println(F("2. E"));
+  Serial.println(F("2. Triangle"));
   char selection;
   while ((selection != '1') && (selection != '2'))
   {
@@ -130,7 +138,7 @@ void loop()
   if (selection == '1')
     Serial.println(F("*** Printing square ***"));
   else if (selection == '2')
-    Serial.println(F("*** Printing circle ***"));
+    Serial.println(F("*** Printing triangle ***"));
   delay(1000);
 
   //waitForGo();
@@ -173,8 +181,8 @@ void loop()
       }
       else if (selection == '2')
       {
-        if (pgm_read_byte_near(&pictureEMatrix[i][y_index]))
-        //if (pictureEMatrix[i][y_index] == 1)
+        if (pgm_read_byte_near(&pictureTriangleMatrix[i][y_index]))
+        //if (pictureTriangleMatrix[i][y_index] == 1)
         {
             tableValue = 1;
             dispense();
@@ -204,12 +212,7 @@ void loop()
         md.setM1Speed(-motorSpeed);
       }
       delay(100);
-       
-      if (tableValue == 1)
-      {
-        md.setM1Speed(0);
-        delay(100);
-      }
+      md.setM1Speed(0);
 
       // if we reach the end of the picture, change motor direction
       // since we are drawing the image zigzag
@@ -219,21 +222,19 @@ void loop()
         motor_x_direction = "left";
     }
 
+    md.setM1Speed(0);
     // move the y direction motor down 1 "pixel"
     md.setM2Speed(motorSpeed);
-    delay(150);
+    delay(180);
     md.setM2Speed(0);
-    delay(100);
   }
   // move motors back to initial position
   md.setM1Speed(-motorSpeed);
   delay(2500);
   md.setM1Speed(0);
-  delay(100);
   md.setM2Speed(-motorSpeed);
-  delay(3750);
+  delay(4500);
   md.setM2Speed(0);
-  delay(100);
   Serial.println(F("Printing Completed"));
 }
 
@@ -244,8 +245,17 @@ void dispense()
   digitalWrite(DISPENSE, HIGH);
   delay(250);
   digitalWrite(DISPENSE, LOW);
-  delay(50);
+  delay(250);
   Serial.println(F("\tDISPENSE"));
+}
+
+void superdispense()
+{
+  digitalWrite(DISPENSE, HIGH);
+  delay(50);
+  digitalWrite(DISPENSE, LOW);
+  delay(100);
+  Serial.println(F("SUPER DISPENSE DONE"));
 }
 
 // *** Manually move the motors through the serial monitor *** //
