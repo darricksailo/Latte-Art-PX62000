@@ -1,0 +1,12 @@
+C:\Users\Darrick\Desktop\FollowThePath\FollowThePath\bin\Debug\FollowThePath.exe.config
+C:\Users\Darrick\Desktop\FollowThePath\FollowThePath\bin\Debug\FollowThePath.exe
+C:\Users\Darrick\Desktop\FollowThePath\FollowThePath\bin\Debug\FollowThePath.pdb
+C:\Users\Darrick\Desktop\FollowThePath\FollowThePath\obj\Debug\FollowThePath.csprojResolveAssemblyReference.cache
+C:\Users\Darrick\Desktop\FollowThePath\FollowThePath\obj\Debug\FollowThePath.exe
+C:\Users\Darrick\Desktop\FollowThePath\FollowThePath\obj\Debug\FollowThePath.pdb
+D:\Documents\GitHub\Latte-Art-PX62000\FollowThePath\FollowThePath\bin\Debug\FollowThePath.exe.config
+D:\Documents\GitHub\Latte-Art-PX62000\FollowThePath\FollowThePath\obj\Debug\FollowThePath.exe
+D:\Documents\GitHub\Latte-Art-PX62000\FollowThePath\FollowThePath\obj\Debug\FollowThePath.pdb
+D:\Documents\GitHub\Latte-Art-PX62000\FollowThePath\FollowThePath\bin\Debug\FollowThePath.exe
+D:\Documents\GitHub\Latte-Art-PX62000\FollowThePath\FollowThePath\bin\Debug\FollowThePath.pdb
+D:\Documents\GitHub\Latte-Art-PX62000\FollowThePath\FollowThePath\obj\Debug\FollowThePath.csprojResolveAssemblyReference.cache
