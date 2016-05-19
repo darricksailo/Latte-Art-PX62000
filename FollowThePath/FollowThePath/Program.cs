@@ -11,31 +11,31 @@ namespace FollowThePath
         static void Main(string[] args)
         {
             int[,] matrix = {
-                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-                        {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, 
-                        {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0}, 
-                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0}, 
+                {0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0}, 
+                {0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
                     };
 
             int resolution = 25;
@@ -50,9 +50,11 @@ namespace FollowThePath
                     {
                         printNum++;
                     }
+                    Console.Write(tempMatrix[i, j]);
                 }
+                Console.WriteLine();
             }
-            Console.WriteLine(printNum);
+            Console.WriteLine("Number of points to print: {0}", printNum);
 
             int delayX = 100;
             int delayY = 180;
@@ -74,6 +76,20 @@ namespace FollowThePath
             int[] xCoord = new int[printNum];
             int[] yCoord = new int[printNum];
             int printNumIndex = 0;
+
+            // Check if starting point needs to be printed
+            // Add it to the need to be printed array if yes
+            // If yes, increment printNumIndex
+            // If yes, decrement number of points to be printed
+            if (tempMatrix[0, 0] == 1)
+            {
+                timeXdelay[printNumIndex] = 0;
+                timeYdelay[printNumIndex] = 0;
+                xCoord[printNumIndex] = 0;
+                xCoord[printNumIndex] = 0;
+                printNumIndex++;
+                printNum--;
+            }
 
             Console.WriteLine("Processing...");
             // Keep iterating until all printing is done
@@ -115,9 +131,12 @@ namespace FollowThePath
                     // Search the adjacent squares of the matrix to current x & y coordinate location
                     for (int i = 0; i < 8 * (offset + 1); i++)
                     {
+                        //Console.WriteLine("Checking Location: {0}, {1}", tempX, tempY);
                         // Make sure that we do not go out of bounds
                         if (tempX >= 0 && tempY >= 0 && tempX < resolution && tempY < resolution)
                         {
+                            //Console.Write("Current Location: {0}, {1}\t", currentX, currentY);
+                            //Console.WriteLine("Checked Location: {0}, {1}", tempX, tempY);
                             // If we found a 1, add the x & y coordinate to the array
                             // Increment the number of 1's found
                             if (tempMatrix[tempX, tempY] == 1)
@@ -126,29 +145,31 @@ namespace FollowThePath
                                 yFound[index] = tempY;
                                 index++;
                                 found++;
+                                //Console.WriteLine("FOUND: {0}, {1}", tempX, tempY);
                             }
                         }
 
                         // Increment/decrement x or y index for adjacent square to look at
-                        if (tempY == (currentY - 1 - offset) && tempX != (currentX + 1 + offset))
-                        {
-                            tempX++;
-                        }
-                        else if (tempX == (currentX + 1 + offset)  && tempY != (currentY + 1 + offset))
+                        if (tempX == (currentX - 1 - offset) && tempY != (currentY + 1 + offset))
                         {
                             tempY++;
                         }
-                        else if (tempY == (currentY + offset + 1) && tempX != (currentX - 1 - offset))
+                        else if (tempY == (currentY + 1 + offset)  && tempX != (currentX + 1 + offset))
                         {
-                            tempX--;
+                            tempX++;
                         }
-                        else if (tempX == (currentX - offset - 1))
+                        else if (tempX == (currentX + offset + 1) && tempY != (currentY - 1 - offset))
                         {
                             tempY--;
+                        }
+                        else if (tempY == (currentY - offset - 1))
+                        {
+                            tempX--;
                         }
                     }
                     // Increase our range of searching by 1 if we do not find any 1's
                     offset++;
+                    //Console.WriteLine();
                 }
 
                 // Calculate the distance from the found 1's compared to the current x and y coordinate
@@ -189,7 +210,20 @@ namespace FollowThePath
                 // Decrement the number of printing to be done
                 printNumIndex++;
                 printNum--;
+
+                for (int i = 0; i < resolution; i++)
+                {
+                    for (int j = 0; j < resolution; j++)
+                    {
+                        Console.Write(tempMatrix[i, j]);
+                    }
+                    Console.WriteLine();
+                }
+                Console.WriteLine();
+                //System.Threading.Thread.Sleep(200);
             }
+
+            Console.WriteLine("Start:\t0,0");
 
             for (int i = 0; i < printNumIndex; i++)
             {
@@ -197,6 +231,7 @@ namespace FollowThePath
                 Console.WriteLine("({0}, {1})", timeXdelay[i], timeYdelay[i]);
             }
 
+            Console.WriteLine("Reset:\t0,0\t({0},{1})", (0 - xCoord[printNumIndex - 1]) * delayX, (0 - yCoord[printNumIndex - 1]) * delayY);
         }
 
     }
