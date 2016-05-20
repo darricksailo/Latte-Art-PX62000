@@ -120,7 +120,8 @@ void setup()
 void loop()
 {
   // wait for the push button to be pressed before we start the printing
-  Serial.println(F("Waiting for input to start printing. Type 'print'"));
+  Serial.println(F("Waiting for input..."));
+  Serial.println(F("Available Commands: 'print', 'move', 'dispense', 'superdispense'"));
   String startInput = "";
   while (startInput != "print")
   {
@@ -134,6 +135,7 @@ void loop()
     {
       Serial.println(startInput);
       moveMotors();
+      Serial.println();
     }
     else if (startInput == "dispense")
     {
@@ -142,6 +144,7 @@ void loop()
       {
         dispense();
       }
+      Serial.println();
     }
     else if (startInput == "superdispense")
     {
@@ -150,6 +153,12 @@ void loop()
       {
         superdispense();
       }
+      Serial.println();
+    }
+    else
+    {
+      Serial.print(F("COMMAND NOT RECOGNIZED: "));
+      Serial.println(startInput);
     }
   }
 
@@ -479,7 +488,7 @@ void moveMotors()
   Serial.println(F("Enter a movement delay"));
   String selection2;
   unsigned int moveDelay;
-  while ((selection2.toInt() != 0) && selection2.toInt() > 0)
+  while (selection2.toInt() <= 0)
   {
     while (Serial.available() == 0);
     if (Serial.available() > 0)
@@ -488,7 +497,8 @@ void moveMotors()
     }
   }
   moveDelay = selection2.toInt();
-  
+  Serial.print(F("Moving delay is "));
+  Serial.println(moveDelay);
   
   if (selection == "1P")
   {
