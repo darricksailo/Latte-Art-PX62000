@@ -9,7 +9,7 @@ const unsigned char width = 25;
 unsigned char motorSpeed = 110;
 bool tempMatrix[height][width];
 
-// store array onto flash memory since it is 32KB as opposed to 2KB SRAM
+// Store array onto flash memory since it is 32KB as opposed to 2KB SRAM
 //SQUARE
 const bool pictureFirstMatrix[height][width] PROGMEM = {
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
@@ -125,6 +125,35 @@ const bool pictureFourthMatrix[height][width] PROGMEM = {
   {0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0}, 
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 };
+
+//DEATHLY HALLOWS SYMBOL
+const bool pictureFifthMatrix[height][width] PROGMEM = {
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0}, 
+  {0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0}, 
+  {0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0}, 
+  {0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0}, 
+  {0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0}, 
+  {0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0}, 
+  {0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0}, 
+  {1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1}, 
+  {1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1}, 
+  {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 
+  {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+};
   
 void setup()
 {
@@ -180,20 +209,20 @@ void loop()
       }
       Serial.println();
     }
-    else
+    else if (startInput != "print")
     {
       Serial.print(F("COMMAND NOT RECOGNIZED: "));
       Serial.println(startInput);
     }
   }
 
-  Serial.println(F("Enter 1, 2, 3, or 4: "));
   Serial.println(F("1. Square"));
   Serial.println(F("2. Triangle"));
   Serial.println(F("3. Smiley Face"));
   Serial.println(F("4. Star"));
+  Serial.println(F("5. Deathly Hallows Symbol"));
   char selection;
-  while ((selection != '1') && (selection != '2') && (selection != '3') && (selection != '4'))
+  while ((selection != '1') && (selection != '2') && (selection != '3') && (selection != '4') && (selection != '5'))
   {
     if (Serial.available() > 0)
     {
@@ -209,9 +238,11 @@ void loop()
     Serial.println(F("*** Printing smiley face ***"));
   else if (selection == '4')
     Serial.println(F("*** Printing star ***"));
+  else if (selection == '5')
+    Serial.println(F("*** Printing deathly hallows symbol ***"));
   delay(1000);
 
-  Serial.println(F("Running Following The Shape Algorithm"));
+  Serial.println(F("Printing is starting"));
 
   int printNum = 0;
   for (int i = 0; i < width; i++)
@@ -226,6 +257,8 @@ void loop()
               tempMatrix[i][j] = pgm_read_byte_near(&pictureThirdMatrix[i][j]);
           else if (selection == '4')
               tempMatrix[i][j] = pgm_read_byte_near(&pictureFourthMatrix[i][j]);
+          else if (selection == '5')
+              tempMatrix[i][j] = pgm_read_byte_near(&pictureFifthMatrix[i][j]);
 
           Serial.print(tempMatrix[i][j]);
           if (tempMatrix[i][j])
@@ -237,6 +270,7 @@ void loop()
   }
   Serial.print(F("Number of points to print: "));
   Serial.println(printNum);
+  delay(1000);
 
   unsigned char delayX = 100;
   unsigned char delayY = 180;
@@ -253,24 +287,20 @@ void loop()
   double minDistance;
   unsigned char minX;
   unsigned char minY;
-  int timeXdelay[printNum];
-  int timeYdelay[printNum];
-  unsigned char xCoord[printNum];
-  unsigned char yCoord[printNum];
+  int timeXdelay;
+  int timeYdelay;
   unsigned char printNumIndex = 0;
 
   // Check if starting point needs to be printed
-  // Add it to the need to be printed array if yes
   // If yes, increment printNumIndex
   // If yes, decrement number of points to be printed
+  // If yes, dispense
   if (tempMatrix[0][0] == 1)
   {
-      timeXdelay[printNumIndex] = 0;
-      timeYdelay[printNumIndex] = 0;
-      xCoord[printNumIndex] = 0;
-      xCoord[printNumIndex] = 0;
       printNumIndex++;
       printNum--;
+      Serial.print(F("1.\t0,0\t(0,0)\t"));
+      dispense();
   }
 
   // Keep iterating until all printing is done
@@ -369,11 +399,8 @@ void loop()
       }
 
       // Store the amount of delay for x and y direction to get to that point
-      // Store the coordinate value
-      timeXdelay[printNumIndex] = (minX - currentX) * delayX;
-      timeYdelay[printNumIndex] = (minY - currentY) * delayY;
-      xCoord[printNumIndex] = minX;
-      yCoord[printNumIndex] = minY;
+      timeXdelay = (minX - currentX) * delayX;
+      timeYdelay = (minY - currentY) * delayY;
 
       // Reset the matrix square printed to 0 so we don't accidentally print it again
       tempMatrix[minX][minY] = 0;
@@ -382,68 +409,43 @@ void loop()
       currentX = minX;
       currentY = minY;
 
-      // Increment the index to store our delay
+      // Increment the index that counts how many we have printed
       // Decrement the number of printing to be done
       printNumIndex++;
       printNum--;
-  }
 
-  /*
-  // Print out the path for the shape
-  for (int i = 0; i < printNumIndex; i++)
-  {
-      Serial.print(i);
-      Serial.print(".\t");
-      Serial.print(xCoord[i]);
-      Serial.print(", ");
-      Serial.print(yCoord[i]);
-      Serial.print("\t");
-
-      Serial.print("(");
-      Serial.print(timeXdelay[i]);
-      Serial.print(", ");
-      Serial.print(timeYdelay[i]);
-      Serial.println(")");
-  }*/
-
-  Serial.println(F("Path calculated!"));
-  delay(1000);
-  Serial.println(F("Printing is starting"));
-
-  for (int i = 0; i < printNumIndex; i++)
-  {
       // Print x & y coordinates
       // Print x & y motor delays
-      Serial.print(i);
+      Serial.print(printNumIndex);
       Serial.print(F(".\t"));
-      Serial.print(xCoord[i]);
+      Serial.print(minX);
       Serial.print(F(","));
-      Serial.print(yCoord[i]);
+      Serial.print(minY);
       Serial.print(F("\t"));
       Serial.print(F("("));
-      Serial.print(timeXdelay[i]);
+      Serial.print(timeXdelay);
       Serial.print(F(", "));
-      Serial.print(timeYdelay[i]);
+      Serial.print(timeYdelay);
       Serial.print(F(")"));
       
       // If time is negative, that means we need to move in the negative direction
       // X direction motor
-      if (timeXdelay[i] < 0)
+      if (timeXdelay < 0)
           md.setM1Speed(-motorSpeed);
-      else if (timeXdelay[i] > 0)
+      else if (timeXdelay > 0)
           md.setM1Speed(motorSpeed);
       // Make we have positive time
-      delay(abs(timeXdelay[i]));
+      delay(abs(timeXdelay));
       md.setM1Speed(0);
   
       // If time is negative, that means we need to move in the negative direction
       // Y direction motor
-      if (timeYdelay[i] < 0)
+      if (timeYdelay < 0)
           md.setM2Speed(-motorSpeed);
-      else if (timeYdelay[i] > 0)
+      else if (timeYdelay > 0)
           md.setM2Speed(motorSpeed);
       // Make we have positive time
-      delay(abs(timeYdelay[i]));
+      delay(abs(timeYdelay));
       md.setM2Speed(0);
   
       // Dispense after we have moved into position
@@ -451,8 +453,8 @@ void loop()
   }
 
   // Calculate how far we are from 0,0
-  int resetXMotor = (0 - xCoord[printNumIndex-1]) * delayX;
-  int resetYMotor = (0 - yCoord[printNumIndex-1]) * delayY;
+  int resetXMotor = (0 - currentX) * delayX;
+  int resetYMotor = (0 - currentY) * delayY;
   Serial.print(F("Reset:\t0,0\t"));
   Serial.print(F("("));
   Serial.print(resetXMotor);
