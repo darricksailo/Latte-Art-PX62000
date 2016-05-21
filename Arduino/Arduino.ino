@@ -3,14 +3,10 @@
 #include <avr/pgmspace.h>
 
 DualMC33926MotorShield md;
-const unsigned char DISPENSE = 3; // Pin 3 controls dispensing motor
+const unsigned char DISPENSE = 3; // Pin 3 controls microdispenser
 const unsigned char height = 25;
 const unsigned char width = 25;
-//int y_index = 0;
 unsigned char motorSpeed = 110;
-//String motor_x_direction;
-//String motor_y_direction;
-//byte tableValue = 0;
 bool tempMatrix[height][width];
 
 // store array onto flash memory since it is 32KB as opposed to 2KB SRAM
@@ -100,6 +96,35 @@ const bool pictureThirdMatrix[height][width] PROGMEM = {
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 };
+
+//STAR
+const bool pictureFourthMatrix[height][width] PROGMEM = {
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 
+  {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0}, 
+  {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0}, 
+  {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0}, 
+  {0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
   
 void setup()
 {
@@ -162,12 +187,13 @@ void loop()
     }
   }
 
-  Serial.println(F("Enter 1, 2, or 3: "));
+  Serial.println(F("Enter 1, 2, 3, or 4: "));
   Serial.println(F("1. Square"));
   Serial.println(F("2. Triangle"));
-  Serial.println(F("2. Smiley Face"));
+  Serial.println(F("3. Smiley Face"));
+  Serial.println(F("4. Star"));
   char selection;
-  while ((selection != '1') && (selection != '2') && (selection != '3'))
+  while ((selection != '1') && (selection != '2') && (selection != '3') && (selection != '4'))
   {
     if (Serial.available() > 0)
     {
@@ -181,6 +207,8 @@ void loop()
     Serial.println(F("*** Printing triangle ***"));
   else if (selection == '3')
     Serial.println(F("*** Printing smiley face ***"));
+  else if (selection == '4')
+    Serial.println(F("*** Printing star ***"));
   delay(1000);
 
   Serial.println(F("Running Following The Shape Algorithm"));
@@ -196,12 +224,16 @@ void loop()
               tempMatrix[i][j] = pgm_read_byte_near(&pictureSecondMatrix[i][j]);
           else if (selection == '3')
               tempMatrix[i][j] = pgm_read_byte_near(&pictureThirdMatrix[i][j]);
-              
+          else if (selection == '4')
+              tempMatrix[i][j] = pgm_read_byte_near(&pictureFourthMatrix[i][j]);
+
+          Serial.print(tempMatrix[i][j]);
           if (tempMatrix[i][j])
           {
               printNum++;
           }
       }
+      Serial.println();
   }
   Serial.print(F("Number of points to print: "));
   Serial.println(printNum);
@@ -212,12 +244,12 @@ void loop()
   unsigned char currentY = 0;
   int tempX = 0;
   int tempY = 0;
-  unsigned char xFound[printNum];
-  unsigned char yFound[printNum];
+  unsigned char xFound[24];
+  unsigned char yFound[24];
   unsigned char index = 0;
   unsigned char found = 0;
   unsigned char offset = 0;
-  double distance[printNum];
+  double distance[24];
   double minDistance;
   unsigned char minX;
   unsigned char minY;
@@ -380,6 +412,20 @@ void loop()
 
   for (int i = 0; i < printNumIndex; i++)
   {
+      // Print x & y coordinates
+      // Print x & y motor delays
+      Serial.print(i);
+      Serial.print(F(".\t"));
+      Serial.print(xCoord[i]);
+      Serial.print(F(","));
+      Serial.print(yCoord[i]);
+      Serial.print(F("\t"));
+      Serial.print(F("("));
+      Serial.print(timeXdelay[i]);
+      Serial.print(F(", "));
+      Serial.print(timeYdelay[i]);
+      Serial.print(F(")"));
+      
       // If time is negative, that means we need to move in the negative direction
       // X direction motor
       if (timeXdelay[i] < 0)
@@ -399,20 +445,6 @@ void loop()
       // Make we have positive time
       delay(abs(timeYdelay[i]));
       md.setM2Speed(0);
-  
-      // Print x & y coordinates
-      // Print x & y motor delays
-      Serial.print(i);
-      Serial.print(F(".\t"));
-      Serial.print(xCoord[i]);
-      Serial.print(F(","));
-      Serial.print(yCoord[i]);
-      Serial.print(F("\t"));
-      Serial.print(F("("));
-      Serial.print(timeXdelay[i]);
-      Serial.print(F(", "));
-      Serial.print(timeYdelay[i]);
-      Serial.print(F(")"));
   
       // Dispense after we have moved into position
       dispense();
@@ -471,8 +503,8 @@ void superdispense()
 void moveMotors()
 {
   Serial.println(F("Enter 1 or 2 and then P or N"));
-  Serial.println(F("1P. Y Motor - left"));
-  Serial.println(F("1N. Y Motor - right"));
+  Serial.println(F("1P. Y Motor - right"));
+  Serial.println(F("1N. Y Motor - left"));
   Serial.println(F("2P. X Motor - down"));
   Serial.println(F("2N. X Motor - up"));
   String selection;
