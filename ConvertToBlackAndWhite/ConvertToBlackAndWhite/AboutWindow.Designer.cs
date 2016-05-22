@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutWindow));
             this.programNameTextBox = new System.Windows.Forms.Label();
             this.versionTextBox = new System.Windows.Forms.Label();
             this.authorTextBox = new System.Windows.Forms.Label();
@@ -55,7 +54,7 @@
             this.versionTextBox.Name = "versionTextBox";
             this.versionTextBox.Size = new System.Drawing.Size(34, 15);
             this.versionTextBox.TabIndex = 1;
-            this.versionTextBox.Text = "1.3.1";
+            this.versionTextBox.Text = "1.3.2";
             // 
             // authorTextBox
             // 
@@ -69,18 +68,20 @@
             // 
             // descriptionLabel
             // 
-            this.descriptionLabel.AutoSize = true;
             this.descriptionLabel.Location = new System.Drawing.Point(12, 57);
             this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(307, 91);
+            this.descriptionLabel.Size = new System.Drawing.Size(315, 60);
             this.descriptionLabel.TabIndex = 4;
-            this.descriptionLabel.Text = resources.GetString("descriptionLabel.Text");
+            this.descriptionLabel.Text = "This program was developed for use with our Cal Poly Pomona undergrad Senior Proj" +
+    "ect (Latte Art PX6200 ) in mind. The program serves as tool to process a provide" +
+    "d image and give us a lookup table";
+            this.descriptionLabel.UseMnemonic = false;
             // 
             // changeLogLabel
             // 
             this.changeLogLabel.AutoSize = true;
             this.changeLogLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changeLogLabel.Location = new System.Drawing.Point(12, 158);
+            this.changeLogLabel.Location = new System.Drawing.Point(12, 118);
             this.changeLogLabel.Name = "changeLogLabel";
             this.changeLogLabel.Size = new System.Drawing.Size(101, 16);
             this.changeLogLabel.TabIndex = 5;
@@ -91,12 +92,12 @@
             this.changeLog.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.changeLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.changeLog.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.changeLog.Location = new System.Drawing.Point(15, 177);
+            this.changeLog.Location = new System.Drawing.Point(15, 137);
             this.changeLog.Multiline = true;
             this.changeLog.Name = "changeLog";
             this.changeLog.ReadOnly = true;
             this.changeLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.changeLog.Size = new System.Drawing.Size(315, 282);
+            this.changeLog.Size = new System.Drawing.Size(315, 322);
             this.changeLog.TabIndex = 3;
             this.changeLog.KeyDown += new System.Windows.Forms.KeyEventHandler(this.changeLog_KeyDown);
             // 
@@ -104,7 +105,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 471);
+            this.ClientSize = new System.Drawing.Size(344, 472);
             this.Controls.Add(this.changeLogLabel);
             this.Controls.Add(this.descriptionLabel);
             this.Controls.Add(this.changeLog);

@@ -43,3 +43,18 @@ C:\Users\Darrick\Documents\GitHub\Latte Art PX62000\ConvertToBlackAndWhite\Conve
 C:\Users\Darrick\Documents\GitHub\Latte Art PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\obj\Release\ConvertToBlackAndWhite.csproj.GenerateResource.Cache
 C:\Users\Darrick\Documents\GitHub\Latte Art PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\obj\Release\ConvertToBlackAndWhite.exe.manifest
 C:\Users\Darrick\Documents\GitHub\Latte Art PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\obj\Release\ConvertToBlackAndWhite.application
+D:\Documents\GitHub\Latte-Art-PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\bin\Release\ConvertToBlackAndWhite.exe.config
+D:\Documents\GitHub\Latte-Art-PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\obj\Release\ConvertToBlackAndWhite.exe
+D:\Documents\GitHub\Latte-Art-PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\obj\Release\ConvertToBlackAndWhite.pdb
+D:\Documents\GitHub\Latte-Art-PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\bin\Release\ConvertToBlackAndWhite.exe.manifest
+D:\Documents\GitHub\Latte-Art-PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\bin\Release\ConvertToBlackAndWhite.application
+D:\Documents\GitHub\Latte-Art-PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\bin\Release\ConvertToBlackAndWhite.exe
+D:\Documents\GitHub\Latte-Art-PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\bin\Release\ConvertToBlackAndWhite.pdb
+D:\Documents\GitHub\Latte-Art-PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\obj\Release\ConvertToBlackAndWhite.csprojResolveAssemblyReference.cache
+D:\Documents\GitHub\Latte-Art-PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\obj\Release\ConvertToBlackAndWhite.MainWindow.resources
+D:\Documents\GitHub\Latte-Art-PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\obj\Release\ConvertToBlackAndWhite.AboutWindow.resources
+D:\Documents\GitHub\Latte-Art-PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\obj\Release\ConvertToBlackAndWhite.Properties.Resources.resources
+D:\Documents\GitHub\Latte-Art-PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\obj\Release\ConvertToBlackAndWhite.ResolutionWindow.resources
+D:\Documents\GitHub\Latte-Art-PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\obj\Release\ConvertToBlackAndWhite.csproj.GenerateResource.Cache
+D:\Documents\GitHub\Latte-Art-PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\obj\Release\ConvertToBlackAndWhite.exe.manifest
+D:\Documents\GitHub\Latte-Art-PX62000\ConvertToBlackAndWhite\ConvertToBlackAndWhite\obj\Release\ConvertToBlackAndWhite.application

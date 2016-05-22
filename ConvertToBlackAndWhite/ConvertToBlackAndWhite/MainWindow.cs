@@ -25,6 +25,8 @@ namespace ConvertToBlackAndWhite
         Bitmap scaledCImage;
         static int[,] bwMatrix = new int[50,50];
         StringBuilder temp;
+        StringBuilder temp1;
+        String textSelection = "";
         public static int resolution = 50;
         string scaleText = "";
         static double scale = 1;
@@ -227,8 +229,17 @@ namespace ConvertToBlackAndWhite
                             int oldGreen = pixels[currentLine + x + 1];
                             int oldRed = pixels[currentLine + x + 2];
 
+                            // if pixel is transparent, alpha channel will equal 0
+                            // interpret transparency layers as white
+                            if (pixels[currentLine + x + 3] == 0)
+                            {
+                                bwMatrix[x / bytesPerPixel, y] = 0;
+                                pixels[currentLine + x] = 0;
+                                pixels[currentLine + x + 1] = 0;
+                                pixels[currentLine + x + 2] = 0;
+                            }
                             // convert to black and white
-                            if ((oldRed + oldGreen + oldBlue) < 575)
+                            else if ((oldRed + oldGreen + oldBlue) < 575)
                             {
                                 // set pixel to black
                                 bwMatrix[x / bytesPerPixel, y] = 1;
@@ -355,12 +366,14 @@ namespace ConvertToBlackAndWhite
                     // create black and white array with specified resolution
                     // output string to code text box
                     temp = new StringBuilder();
+                    temp1 = new StringBuilder();
                     temp.Append("{ ");
                     for (int i = 0; i < resolution; i++)
                     {
                         temp.Append("{");
                         for (int j = 0; j < resolution; j++)
                         {
+                            temp1.Append(bwMatrix[j, i]);
                             if (j < resolution - 1)
                             {
                                 temp.Append(bwMatrix[j, i].ToString());
@@ -382,6 +395,7 @@ namespace ConvertToBlackAndWhite
                     }
                     temp.Append("}");
                     richCodeTextBox.Text = temp.ToString();
+                    textSelection = "lookup_table";
 
                     // create scaled images based on the scale
                     // output processed image to picture box
@@ -403,6 +417,11 @@ namespace ConvertToBlackAndWhite
                     // allow changes to scale percentage box
                     scaleTextBox.ReadOnly = false;
                     progressStatusLabel.Text = "Done";
+                    
+                    // dispose original image since we no longer need it
+                    // this allows user to move/delete/etc file on computer without having to exit the program
+                    _image.Dispose();
+                    bt.Dispose();
 
                     aStopWatch.Stop();
                     //filePathTextBox.Text = (aStopWatch.ElapsedMilliseconds).ToString() + " milliseconds elapsed";
@@ -481,6 +500,16 @@ namespace ConvertToBlackAndWhite
         {
             try
             {
+                if (textSelection == "lookup_table")
+                {
+                    textSelection = "plain_array";
+                    richCodeTextBox.Text = temp.ToString();
+                }
+                else if (textSelection == "plain_array")
+                {
+                    textSelection = "lookup_table";
+                    richCodeTextBox.Text = temp1.ToString();
+                }
                 bwPictureBox.Visible = false;
                 richCodeTextBox.Visible = true;
             }

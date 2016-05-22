@@ -117,15 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="descriptionLabel.Text" xml:space="preserve">
-    <value>A program to conveniently crop provided image to center, resize
-to specified square dimensions, and convert to black and white.
-Provides an array to indicate white or black. This program was
-created with the intention to aid our senior project of the coffee
-latte art machine. The matrix will serve as a look up table for
-our arduino to go through to determine to dispense the liquid or
-not to create the intended shape.</value>
-  </data>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
