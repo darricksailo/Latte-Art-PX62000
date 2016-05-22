@@ -223,15 +223,19 @@ void loop()
   Serial.println(F("3. Smiley Face"));
   Serial.println(F("4. Star"));
   Serial.println(F("5. Deathly Hallows Symbol"));
+  Serial.println(F("6. Custom Image"));
   char selection;
-  while ((selection != '1') && (selection != '2') && (selection != '3') && (selection != '4') && (selection != '5'))
+  while ((selection != '1') && (selection != '2') && (selection != '3') && (selection != '4') && (selection != '5') && (selection != '6'))
   {
+    while (Serial.available() == 0);
     if (Serial.available() > 0)
     {
       selection = Serial.read();
     }
   }
-  
+
+  int printNum = 0;
+  String tempCustomValue;
   if (selection == '1')
     Serial.println(F("*** Printing square ***"));
   else if (selection == '2')
@@ -242,33 +246,82 @@ void loop()
     Serial.println(F("*** Printing star ***"));
   else if (selection == '5')
     Serial.println(F("*** Printing deathly hallows symbol ***"));
-  delay(1000);
-
-  Serial.println(F("Printing is starting"));
-
-  int printNum = 0;
-  for (int i = 0; i < width; i++)
+  else if (selection == '6')
   {
+    Serial.println(F("Please enter custom image's array into serial monitor"));
+    Serial.println(F("The picture should be a 25x25 array or 625 characters"));
+    while (Serial.available() == 0);
+    Serial.println(F("Reading input...please wait a moment"));
+    while (Serial.available() > 0)
+    {
+      tempCustomValue = Serial.readString();
+    }
+
+    while (tempCustomValue.length() != 625)
+    {
+        Serial.println(F("Incorrect input. Please enter 625 characters"));
+        while (Serial.available() == 0);
+        Serial.println(F("Reading input...please wait a moment"));
+        while (Serial.available() > 0)
+        {
+          tempCustomValue = Serial.readString();
+        }
+    }
+
+    Serial.println(F("*** Printing custom image ***"));
+    delay(1000);
+    Serial.println(F("Printing is starting"));
+    
+    int customNum = 0;
+    for (int i = 0; i < width; i++)
+    {
       for (int j = 0; j < height; j++)
       {
-          if (selection == '1')
-              tempMatrix[i][j] = pgm_read_byte_near(&pictureFirstMatrix[i][j]);
-          else if (selection == '2')
-              tempMatrix[i][j] = pgm_read_byte_near(&pictureSecondMatrix[i][j]);
-          else if (selection == '3')
-              tempMatrix[i][j] = pgm_read_byte_near(&pictureThirdMatrix[i][j]);
-          else if (selection == '4')
-              tempMatrix[i][j] = pgm_read_byte_near(&pictureFourthMatrix[i][j]);
-          else if (selection == '5')
-              tempMatrix[i][j] = pgm_read_byte_near(&pictureFifthMatrix[i][j]);
-
-          Serial.print(tempMatrix[i][j]);
-          if (tempMatrix[i][j])
-          {
-              printNum++;
-          }
+        if (tempCustomValue.charAt(customNum) == '0')
+          tempMatrix[i][j] = 0;
+        else if (tempCustomValue.charAt(customNum) == '1')
+          tempMatrix[i][j] = 1;
+        else
+          tempMatrix[i][j] = 0;
+          
+        Serial.print(tempMatrix[i][j]);
+        customNum++;
+        if (tempMatrix[i][j])
+        {
+            printNum++;
+        }
       }
       Serial.println();
+    }
+  }
+  
+  if (selection != '6')
+  {
+    delay(1000);
+    Serial.println(F("Printing is starting"));
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = 0; j < height; j++)
+        {
+            if (selection == '1')
+                tempMatrix[i][j] = pgm_read_byte_near(&pictureFirstMatrix[i][j]);
+            else if (selection == '2')
+                tempMatrix[i][j] = pgm_read_byte_near(&pictureSecondMatrix[i][j]);
+            else if (selection == '3')
+                tempMatrix[i][j] = pgm_read_byte_near(&pictureThirdMatrix[i][j]);
+            else if (selection == '4')
+                tempMatrix[i][j] = pgm_read_byte_near(&pictureFourthMatrix[i][j]);
+            else if (selection == '5')
+                tempMatrix[i][j] = pgm_read_byte_near(&pictureFifthMatrix[i][j]);
+  
+            Serial.print(tempMatrix[i][j]);
+            if (tempMatrix[i][j])
+            {
+                printNum++;
+            }
+        }
+        Serial.println();
+    }
   }
   Serial.print(F("Number of points to print: "));
   Serial.println(printNum);
