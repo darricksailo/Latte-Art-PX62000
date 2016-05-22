@@ -23,11 +23,11 @@ namespace ConvertToBlackAndWhite
         Bitmap croppedImage;
         Bitmap scaledOImage;
         Bitmap scaledCImage;
-        static int[,] bwMatrix = new int[50,50];
+        static int[,] bwMatrix = new int[25,25];
         StringBuilder temp;
         StringBuilder temp1;
         String textSelection = "";
-        public static int resolution = 50;
+        public static int resolution = 25;
         string scaleText = "";
         static double scale = 1;
         int scaledResolution = (int)(scale * resolution);

@@ -12,7 +12,7 @@ namespace ConvertToBlackAndWhite
 {
     public partial class AboutWindow : Form
     {
-        string[] about1 = new string[7];
+        string[] about1 = new string[8];
         StringBuilder about = new StringBuilder();
         public AboutWindow()
         {
@@ -23,6 +23,7 @@ namespace ConvertToBlackAndWhite
 
         private void showdescription()
         {
+            about1[7] = "v1.3.3\t05/22/16\r\n\u2022 Changed default resolution from 50x50 pixels to 25x25 pixels\r\n\r\n";
             about1[6] = "v1.3.2\t05/22/16\r\n\u2022 Releases image resources after processing\r\n\u2022 Supports images with transparent layers! No more need to convert png's to jpg's\r\n\u2022 Clicking on 'Text' button will toggle between lookup table & plain array\r\n\r\n";
             about1[5] = "v1.3.1\t04/30/16\r\n\u2022 Added try-catch statements to hopefully prevent all unhandled exceptions\r\n\r\n";
             about1[4] = "v1.3.0\t02/19/16\r\n\u2022 Completely revamped how image processing is done\r\n\u2022 Image processing is up to 7 times faster!\r\n\u2022 Total run time is up to 3 times faster\r\n\u2022 Removed multithreading image processing\r\n\u2022 Fixed a bug where saving an image and trying to process the same image again would cause an unhandled exception\r\n\u2022 Changed version numbers from 1.0.x to 1.x to indicate versions with significant improvements\r\n\r\n";

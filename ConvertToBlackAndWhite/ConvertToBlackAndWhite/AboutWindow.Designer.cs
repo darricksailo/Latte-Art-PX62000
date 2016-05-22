@@ -54,7 +54,7 @@
             this.versionTextBox.Name = "versionTextBox";
             this.versionTextBox.Size = new System.Drawing.Size(34, 15);
             this.versionTextBox.TabIndex = 1;
-            this.versionTextBox.Text = "1.3.2";
+            this.versionTextBox.Text = "1.3.3";
             // 
             // authorTextBox
             // 

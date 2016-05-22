@@ -160,7 +160,7 @@
             // 
             this.resolutionStatusLabel.Name = "resolutionStatusLabel";
             this.resolutionStatusLabel.Size = new System.Drawing.Size(110, 17);
-            this.resolutionStatusLabel.Text = "Resolution: 50x50px";
+            this.resolutionStatusLabel.Text = "Resolution: 25x25px";
             // 
             // toolStripStatusLabel1
             // 
