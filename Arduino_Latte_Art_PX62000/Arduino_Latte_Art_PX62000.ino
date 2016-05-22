@@ -6,7 +6,9 @@ DualMC33926MotorShield md;
 const unsigned char DISPENSE = 3; // Pin 3 controls microdispenser
 const unsigned char height = 25;
 const unsigned char width = 25;
-unsigned char motorSpeed = 110;
+const unsigned char motorSpeed = 110;
+const unsigned char delayX = 100;
+const unsigned char delayY = 180;
 bool tempMatrix[height][width];
 
 // Store array onto flash memory since it is 32KB as opposed to 2KB SRAM
@@ -272,8 +274,6 @@ void loop()
   Serial.println(printNum);
   delay(1000);
 
-  unsigned char delayX = 100;
-  unsigned char delayY = 180;
   unsigned char currentX = 0;
   unsigned char currentY = 0;
   int tempX = 0;
