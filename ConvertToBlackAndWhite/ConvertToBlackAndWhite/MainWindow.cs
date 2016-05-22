@@ -24,8 +24,8 @@ namespace ConvertToBlackAndWhite
         Bitmap scaledOImage;
         Bitmap scaledCImage;
         static int[,] bwMatrix = new int[25,25];
-        StringBuilder temp;
-        StringBuilder temp1;
+        String text_lookup_table;
+        String text_plain_array;
         String textSelection = "";
         public static int resolution = 25;
         string scaleText = "";
@@ -35,7 +35,8 @@ namespace ConvertToBlackAndWhite
         public MainWindow()
         {
             InitializeComponent();
-            richCodeTextBox.Visible = true;
+            richCodeTextBox_plain.Visible = true;
+            richCodeTextBox_lookup.Visible = true;
             bwPictureBox.Visible = false;
             processedImageButton.Enabled = false;
             textButton.Enabled = false;
@@ -111,8 +112,11 @@ namespace ConvertToBlackAndWhite
                     bwPictureBox.Size = new System.Drawing.Size((int)(scale * resolution) + 18, (int)(scale * resolution) + 18);
                     bwPictureBox.Location = new System.Drawing.Point(12, 120 + (2 * heightChanged) / 16);
 
-                    richCodeTextBox.Size = new System.Drawing.Size(318 + widthChanged, 318 + heightChanged);
-                    richCodeTextBox.Location = new System.Drawing.Point(12, 120 + (2 * heightChanged) / 16);
+                    richCodeTextBox_lookup.Size = new System.Drawing.Size(318 + widthChanged, 318 + (int)(0.88 * heightChanged));
+                    richCodeTextBox_lookup.Location = new System.Drawing.Point(12, 120 + (2 * heightChanged) / 16);
+
+                    richCodeTextBox_plain.Size = new System.Drawing.Size(318 + widthChanged, 318 + (int)(0.88 * heightChanged));
+                    richCodeTextBox_plain.Location = new System.Drawing.Point(12, 120 + (2 * heightChanged) / 16);
 
                     resolutionStatusLabel.Size = new System.Drawing.Size(resolutionStatusLabel.Size.Width, 17 + heightChanged / 32);
                     resolutionStatusLabel.Font = new Font(resolutionStatusLabel.Font.Name, 9 + widthChanged / 256, resolutionStatusLabel.Font.Style);
@@ -160,7 +164,8 @@ namespace ConvertToBlackAndWhite
                 if (valid)
                 {
                     aStopWatch.Start();
-                    richCodeTextBox.Visible = false;
+                    richCodeTextBox_plain.Visible = false;
+                    richCodeTextBox_lookup.Visible = false;
                     bwPictureBox.Visible = true;
                     int imageHeight, imageWidth;
                     int xStart, yStart;
@@ -365,8 +370,8 @@ namespace ConvertToBlackAndWhite
 
                     // create black and white array with specified resolution
                     // output string to code text box
-                    temp = new StringBuilder();
-                    temp1 = new StringBuilder();
+                    StringBuilder temp = new StringBuilder();
+                    StringBuilder temp1 = new StringBuilder();
                     temp.Append("{ ");
                     for (int i = 0; i < resolution; i++)
                     {
@@ -394,7 +399,10 @@ namespace ConvertToBlackAndWhite
                         }
                     }
                     temp.Append("}");
-                    richCodeTextBox.Text = temp.ToString();
+                    text_lookup_table = temp.ToString();
+                    text_plain_array = temp1.ToString();
+                    richCodeTextBox_lookup.Text = text_lookup_table;
+                    richCodeTextBox_plain.Text = text_plain_array;
                     textSelection = "lookup_table";
 
                     // create scaled images based on the scale
@@ -487,7 +495,7 @@ namespace ConvertToBlackAndWhite
             try
             {
                 bwPictureBox.Image = scaledCImage;
-                richCodeTextBox.Visible = false;
+                richCodeTextBox_lookup.Visible = false;
                 bwPictureBox.Visible = true;
             }
             catch (Exception error)
@@ -500,32 +508,18 @@ namespace ConvertToBlackAndWhite
         {
             try
             {
+                bwPictureBox.Visible = false;
                 if (textSelection == "lookup_table")
                 {
                     textSelection = "plain_array";
-                    richCodeTextBox.Text = temp.ToString();
+                    richCodeTextBox_lookup.Visible = true;
+                    richCodeTextBox_plain.Visible = false;
                 }
                 else if (textSelection == "plain_array")
                 {
                     textSelection = "lookup_table";
-                    richCodeTextBox.Text = temp1.ToString();
-                }
-                bwPictureBox.Visible = false;
-                richCodeTextBox.Visible = true;
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.ToString());
-            }
-        }
-
-        private void richCodeTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (e.Control && e.KeyCode == Keys.A)
-                {
-                    richCodeTextBox.SelectAll();
+                    richCodeTextBox_plain.Visible = true;
+                    richCodeTextBox_lookup.Visible = false;
                 }
             }
             catch (Exception error)
@@ -539,7 +533,7 @@ namespace ConvertToBlackAndWhite
             try
             {
                 bwPictureBox.Image = scaledOImage;
-                richCodeTextBox.Visible = false;
+                richCodeTextBox_lookup.Visible = false;
                 bwPictureBox.Visible = true;
             }
             catch (Exception error)

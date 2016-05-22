@@ -12,7 +12,7 @@ namespace ConvertToBlackAndWhite
 {
     public partial class AboutWindow : Form
     {
-        string[] about1 = new string[8];
+        string[] about1 = new string[9];
         StringBuilder about = new StringBuilder();
         public AboutWindow()
         {
@@ -23,8 +23,9 @@ namespace ConvertToBlackAndWhite
 
         private void showdescription()
         {
-            about1[7] = "v1.3.3\t05/22/16\r\n\u2022 Changed default resolution from 50x50 pixels to 25x25 pixels\r\n\r\n";
-            about1[6] = "v1.3.2\t05/22/16\r\n\u2022 Releases image resources after processing\r\n\u2022 Supports images with transparent layers! No more need to convert png's to jpg's\r\n\u2022 Clicking on 'Text' button will toggle between lookup table & plain array\r\n\r\n";
+            about1[8] = "v1.3.4\t05/22/16\r\n\u2022 Fixed unnecessary text rendering with the new look up table and plain text toggle feature\r\n\u2022 Fixed textbox scaling\r\n\u2022 Removed unnecessary event handler\r\n\u2022 Fixed v1.3.2 & v1.3.3 release date\r\n\r\n";
+            about1[7] = "v1.3.3\t05/21/16\r\n\u2022 Changed default resolution from 50x50 pixels to 25x25 pixels\r\n\r\n";
+            about1[6] = "v1.3.2\t05/21/16\r\n\u2022 Releases image resources after processing\r\n\u2022 Supports images with transparent layers! No more need to convert png's to jpg's\r\n\u2022 Clicking on 'Text' button will toggle between lookup table & plain array\r\n\r\n";
             about1[5] = "v1.3.1\t04/30/16\r\n\u2022 Added try-catch statements to hopefully prevent all unhandled exceptions\r\n\r\n";
             about1[4] = "v1.3.0\t02/19/16\r\n\u2022 Completely revamped how image processing is done\r\n\u2022 Image processing is up to 7 times faster!\r\n\u2022 Total run time is up to 3 times faster\r\n\u2022 Removed multithreading image processing\r\n\u2022 Fixed a bug where saving an image and trying to process the same image again would cause an unhandled exception\r\n\u2022 Changed version numbers from 1.0.x to 1.x to indicate versions with significant improvements\r\n\r\n";
             about1[3] = "v1.2.0\t02/17/16\r\n\u2022 Fixed an unhandled exception error when minimizing the window due to GUI scaling implementation\r\n\u2022 Significant speed improvements:\r\n\t\u2022 Multithreaded image processing!\r\n\t\u2022 No more delay when rendering the text\r\n\tbox!\r\n\u2022 Changed text box background color to a tinted white color for those that are read-only\r\n\u2022 Properly disabled word wrapping\r\n\r\n";

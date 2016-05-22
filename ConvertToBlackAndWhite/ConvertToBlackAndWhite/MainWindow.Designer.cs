@@ -45,8 +45,9 @@
             this.scaleTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.saveDialog = new System.Windows.Forms.SaveFileDialog();
-            this.richCodeTextBox = new System.Windows.Forms.RichTextBox();
+            this.richCodeTextBox_lookup = new System.Windows.Forms.RichTextBox();
             this.codeTextBox = new System.Windows.Forms.TextBox();
+            this.richCodeTextBox_plain = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.bwPictureBox)).BeginInit();
             this.resolutionProgressStatusBar.SuspendLayout();
             this.SuspendLayout();
@@ -165,7 +166,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(162, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(193, 17);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // progressStatusLabel
@@ -202,16 +203,16 @@
             // 
             this.saveDialog.Filter = "JPEG|*.jpg";
             // 
-            // richCodeTextBox
+            // richCodeTextBox_lookup
             // 
-            this.richCodeTextBox.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.richCodeTextBox.Location = new System.Drawing.Point(12, 120);
-            this.richCodeTextBox.Name = "richCodeTextBox";
-            this.richCodeTextBox.ReadOnly = true;
-            this.richCodeTextBox.Size = new System.Drawing.Size(318, 318);
-            this.richCodeTextBox.TabIndex = 14;
-            this.richCodeTextBox.Text = "";
-            this.richCodeTextBox.WordWrap = false;
+            this.richCodeTextBox_lookup.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.richCodeTextBox_lookup.Location = new System.Drawing.Point(12, 120);
+            this.richCodeTextBox_lookup.Name = "richCodeTextBox_lookup";
+            this.richCodeTextBox_lookup.ReadOnly = true;
+            this.richCodeTextBox_lookup.Size = new System.Drawing.Size(318, 318);
+            this.richCodeTextBox_lookup.TabIndex = 14;
+            this.richCodeTextBox_lookup.Text = "";
+            this.richCodeTextBox_lookup.WordWrap = false;
             // 
             // codeTextBox
             // 
@@ -224,7 +225,17 @@
             this.codeTextBox.TabIndex = 6;
             this.codeTextBox.Visible = false;
             this.codeTextBox.WordWrap = false;
-            this.codeTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richCodeTextBox_KeyDown);
+            // 
+            // richCodeTextBox_plain
+            // 
+            this.richCodeTextBox_plain.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.richCodeTextBox_plain.Location = new System.Drawing.Point(12, 120);
+            this.richCodeTextBox_plain.Name = "richCodeTextBox_plain";
+            this.richCodeTextBox_plain.ReadOnly = true;
+            this.richCodeTextBox_plain.Size = new System.Drawing.Size(318, 318);
+            this.richCodeTextBox_plain.TabIndex = 15;
+            this.richCodeTextBox_plain.Text = "";
+            this.richCodeTextBox_plain.WordWrap = false;
             // 
             // MainWindow
             // 
@@ -243,8 +254,9 @@
             this.Controls.Add(this.browseButton);
             this.Controls.Add(this.bwPictureBox);
             this.Controls.Add(this.scaleTextBox);
-            this.Controls.Add(this.richCodeTextBox);
+            this.Controls.Add(this.richCodeTextBox_lookup);
             this.Controls.Add(this.codeTextBox);
+            this.Controls.Add(this.richCodeTextBox_plain);
             this.MinimumSize = new System.Drawing.Size(360, 510);
             this.Name = "MainWindow";
             this.Text = "Convert Image to Black & White";
@@ -274,10 +286,11 @@
         private System.Windows.Forms.TextBox scaleTextBox;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.SaveFileDialog saveDialog;
-        private System.Windows.Forms.RichTextBox richCodeTextBox;
+        private System.Windows.Forms.RichTextBox richCodeTextBox_lookup;
         private System.Windows.Forms.TextBox codeTextBox;
         private System.Windows.Forms.ToolStripStatusLabel progressStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.RichTextBox richCodeTextBox_plain;
 
     }
 }
