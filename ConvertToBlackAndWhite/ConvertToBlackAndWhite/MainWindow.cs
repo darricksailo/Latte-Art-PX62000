@@ -399,6 +399,7 @@ namespace ConvertToBlackAndWhite
                         }
                     }
                     temp.Append("}");
+                    temp1.Append(";!;STOP;!;");
                     text_lookup_table = temp.ToString();
                     text_plain_array = temp1.ToString();
                     richCodeTextBox_lookup.Text = text_lookup_table;
