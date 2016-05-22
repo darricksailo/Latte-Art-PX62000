@@ -252,19 +252,24 @@ void loop()
     Serial.println(F("The picture should be a 25x25 array or 625 characters"));
     while (Serial.available() == 0);
     Serial.println(F("Reading input...please wait a moment"));
-    while (Serial.available() > 0)
+    Serial.println(F("Please do not forget the stopping delimiter at the end: ;!;STOP;!;"));
+    while (!tempCustomValue.endsWith(";!;STOP;!;"))
     {
-      tempCustomValue = Serial.readString();
+        while (Serial.available() == 0);
+        tempCustomValue += (char) Serial.read();
     }
 
-    while (tempCustomValue.length() != 625)
+    while (tempCustomValue.length() != 635)
     {
+        tempCustomValue = "";
         Serial.println(F("Incorrect input. Please enter 625 characters"));
         while (Serial.available() == 0);
         Serial.println(F("Reading input...please wait a moment"));
-        while (Serial.available() > 0)
+        Serial.println(F("Please do not forget the stopping delimiter at the end: ;!;STOP;!;"));
+        while (!tempCustomValue.endsWith(";!;STOP;!;"))
         {
-          tempCustomValue = Serial.readString();
+            while (Serial.available() == 0);
+            tempCustomValue += (char) Serial.read();
         }
     }
 
