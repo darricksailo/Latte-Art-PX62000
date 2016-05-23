@@ -10,3 +10,9 @@ D:\Documents\GitHub\Latte-Art-PX62000\FollowThePath\FollowThePath\obj\Debug\Foll
 D:\Documents\GitHub\Latte-Art-PX62000\FollowThePath\FollowThePath\bin\Debug\FollowThePath.exe
 D:\Documents\GitHub\Latte-Art-PX62000\FollowThePath\FollowThePath\bin\Debug\FollowThePath.pdb
 D:\Documents\GitHub\Latte-Art-PX62000\FollowThePath\FollowThePath\obj\Debug\FollowThePath.csprojResolveAssemblyReference.cache
+C:\Users\Darrick\Documents\GitHub\Latte Art PX62000\FollowThePath\FollowThePath\bin\Debug\FollowThePath.exe.config
+C:\Users\Darrick\Documents\GitHub\Latte Art PX62000\FollowThePath\FollowThePath\obj\Debug\FollowThePath.exe
+C:\Users\Darrick\Documents\GitHub\Latte Art PX62000\FollowThePath\FollowThePath\obj\Debug\FollowThePath.pdb
+C:\Users\Darrick\Documents\GitHub\Latte Art PX62000\FollowThePath\FollowThePath\bin\Debug\FollowThePath.exe
+C:\Users\Darrick\Documents\GitHub\Latte Art PX62000\FollowThePath\FollowThePath\bin\Debug\FollowThePath.pdb
+C:\Users\Darrick\Documents\GitHub\Latte Art PX62000\FollowThePath\FollowThePath\obj\Debug\FollowThePath.csprojResolveAssemblyReference.cache

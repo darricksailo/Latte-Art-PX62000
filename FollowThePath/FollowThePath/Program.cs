@@ -38,12 +38,13 @@ namespace FollowThePath
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
                     };
 
-            int resolution = 25;
+            int height = 25;
+            int width = 25;
             int printNum = 0;
-            int[,] tempMatrix = new int[resolution, resolution];
-            for (int i = 0; i < resolution; i++)
+            int[,] tempMatrix = new int[height, width];
+            for (int i = 0; i < height; i++)
             {
-                for (int j = 0; j < resolution; j++)
+                for (int j = 0; j < width; j++)
                 {
                     tempMatrix[i, j] = matrix[i, j];
                     if (tempMatrix[i, j] == 1)
@@ -131,40 +132,40 @@ namespace FollowThePath
                     // Search the adjacent squares of the matrix to current x & y coordinate location
                     for (int i = 0; i < 8 * (offset + 1); i++)
                     {
-                        //Console.WriteLine("Checking Location: {0}, {1}", tempX, tempY);
+                        //Console.WriteLine("Checking Location: {0}, {1}", tempY, tempX);
                         // Make sure that we do not go out of bounds
-                        if (tempX >= 0 && tempY >= 0 && tempX < resolution && tempY < resolution)
+                        if (tempX >= 0 && tempY >= 0 && tempX < width && tempY < height)
                         {
-                            //Console.Write("Current Location: {0}, {1}\t", currentX, currentY);
-                            //Console.WriteLine("Checked Location: {0}, {1}", tempX, tempY);
+                            //Console.Write("Current Location: {0}, {1}\t", tempY, tempX);
+                            //Console.WriteLine("Checked Location: {0}, {1}", tempY, tempX);
                             // If we found a 1, add the x & y coordinate to the array
                             // Increment the number of 1's found
-                            if (tempMatrix[tempX, tempY] == 1)
+                            if (tempMatrix[tempY, tempX] == 1)
                             {
                                 xFound[index] = tempX;
                                 yFound[index] = tempY;
                                 index++;
                                 found++;
-                                //Console.WriteLine("FOUND: {0}, {1}", tempX, tempY);
+                                //Console.WriteLine("FOUND: {0}, {1}", tempY, tempX);
                             }
                         }
 
                         // Increment/decrement x or y index for adjacent square to look at
-                        if (tempX == (currentX - 1 - offset) && tempY != (currentY + 1 + offset))
-                        {
-                            tempY++;
-                        }
-                        else if (tempY == (currentY + 1 + offset)  && tempX != (currentX + 1 + offset))
+                        if (tempY == (currentY - 1 - offset) && tempX != (currentX + 1 + offset))
                         {
                             tempX++;
                         }
-                        else if (tempX == (currentX + offset + 1) && tempY != (currentY - 1 - offset))
+                        else if (tempX == (currentX + 1 + offset)  && tempY != (currentY + 1 + offset))
                         {
-                            tempY--;
+                            tempY++;
                         }
-                        else if (tempY == (currentY - offset - 1))
+                        else if (tempY == (currentY + offset + 1) && tempX != (currentX - 1 - offset))
                         {
                             tempX--;
+                        }
+                        else if (tempX == (currentX - offset - 1))
+                        {
+                            tempY--;
                         }
                     }
                     // Increase our range of searching by 1 if we do not find any 1's
@@ -200,7 +201,7 @@ namespace FollowThePath
                 yCoord[printNumIndex] = minY;
 
                 // Reset the matrix square printed to 0 so we don't accidentally print it again
-                tempMatrix[minX, minY] = 0;
+                tempMatrix[minY, minX] = 0;
 
                 // Change our current x and y coordinate location to the printed location
                 currentX = minX;
@@ -211,27 +212,27 @@ namespace FollowThePath
                 printNumIndex++;
                 printNum--;
 
-                for (int i = 0; i < resolution; i++)
+                /*for (int i = 0; i < height; i++)
                 {
-                    for (int j = 0; j < resolution; j++)
+                    for (int j = 0; j < width; j++)
                     {
                         Console.Write(tempMatrix[i, j]);
                     }
                     Console.WriteLine();
                 }
                 Console.WriteLine();
-                //System.Threading.Thread.Sleep(200);
+                System.Threading.Thread.Sleep(200);*/
             }
 
             Console.WriteLine("Start:\t0,0");
 
             for (int i = 0; i < printNumIndex; i++)
             {
-                Console.Write("{0}.\t{1}, {2}\t", i, xCoord[i], yCoord[i]);
-                Console.WriteLine("({0}, {1})", timeXdelay[i], timeYdelay[i]);
+                Console.Write("{0}.\t{1}, {2}\t", i, yCoord[i], xCoord[i]);
+                Console.WriteLine("({0}, {1})", timeYdelay[i], timeXdelay[i]);
             }
 
-            Console.WriteLine("Reset:\t0,0\t({0},{1})", (0 - xCoord[printNumIndex - 1]) * delayX, (0 - yCoord[printNumIndex - 1]) * delayY);
+            Console.WriteLine("Reset:\t0,0\t({0},{1})", (0 - yCoord[printNumIndex - 1]) * delayY, (0 - xCoord[printNumIndex - 1]) * delayX);
         }
 
     }
