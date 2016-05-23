@@ -7,8 +7,8 @@ const unsigned char DISPENSE = 3; // Pin 3 controls microdispenser
 const unsigned char height = 25;
 const unsigned char width = 25;
 const unsigned char motorSpeed = 110;
-const unsigned char delayX = 100;
-const unsigned char delayY = 180;
+const unsigned char delayX = 150;
+const unsigned char delayY = 150;
 bool tempMatrix[height][width];
 
 // Store array onto flash memory since it is 32KB as opposed to 2KB SRAM
@@ -200,7 +200,7 @@ void loop()
       {
         dispense();
       }
-      Serial.println();
+      Serial.println(F("Dispense Done\n"));
     }
     else if (startInput == "superdispense")
     {
@@ -209,7 +209,7 @@ void loop()
       {
         superdispense();
       }
-      Serial.println();
+      Serial.println(F("SUPERDISPENSE DONE\n"));
     }
     else if (startInput != "print")
     {
@@ -405,7 +405,7 @@ void loop()
               {
                   // If we found a 1, add the x & y coordinate to the array
                   // Increment the number of 1's found
-                  if (tempMatrix[tempX][tempY])
+                  if (tempMatrix[tempY][tempX])
                   {
                       xFound[index] = tempX;
                       yFound[index] = tempY;
@@ -415,21 +415,21 @@ void loop()
               }
 
               // Increment/decrement x or y index for adjacent square to look at
-              if (tempX == (currentX - 1 - offset) && tempY != (currentY + 1 + offset))
-              {
-                  tempY++;
-              }
-              else if (tempY == (currentY + 1 + offset)  && tempX != (currentX + 1 + offset))
+              if (tempY == (currentY - 1 - offset) && tempX != (currentX + 1 + offset))
               {
                   tempX++;
               }
-              else if (tempX == (currentX + offset + 1) && tempY != (currentY - 1 - offset))
+              else if (tempX == (currentX + 1 + offset)  && tempY != (currentY + 1 + offset))
               {
-                  tempY--;
+                  tempY++;
               }
-              else if (tempY == (currentY - offset - 1))
+              else if (tempY == (currentY + 1 + offset) && tempX != (currentX - 1 - offset))
               {
                   tempX--;
+              }
+              else if (tempX == (currentX - 1 - offset))
+              {
+                  tempY--;
               }
           }
           // Increase our range of searching by 1 if we do not find any 1's
@@ -461,7 +461,7 @@ void loop()
       timeYdelay = (minY - currentY) * delayY;
 
       // Reset the matrix square printed to 0 so we don't accidentally print it again
-      tempMatrix[minX][minY] = 0;
+      tempMatrix[minY][minX] = 0;
 
       // Change our current x and y coordinate location to the printed location
       currentX = minX;
@@ -476,35 +476,35 @@ void loop()
       // Print x & y motor delays
       Serial.print(printNumIndex);
       Serial.print(F(".\t"));
-      Serial.print(minX);
-      Serial.print(F(","));
       Serial.print(minY);
+      Serial.print(F(","));
+      Serial.print(minX);
       Serial.print(F("\t"));
       Serial.print(F("("));
-      Serial.print(timeXdelay);
-      Serial.print(F(", "));
       Serial.print(timeYdelay);
+      Serial.print(F(", "));
+      Serial.print(timeXdelay);
       Serial.print(F(")"));
       
       // If time is negative, that means we need to move in the negative direction
       // X direction motor
       if (timeXdelay < 0)
-          md.setM1Speed(-motorSpeed);
+          md.setM2Speed(-motorSpeed);
       else if (timeXdelay > 0)
-          md.setM1Speed(motorSpeed);
+          md.setM2Speed(motorSpeed);
       // Make we have positive time
       delay(abs(timeXdelay));
-      md.setM1Speed(0);
+      md.setM2Speed(0);
   
       // If time is negative, that means we need to move in the negative direction
       // Y direction motor
       if (timeYdelay < 0)
-          md.setM2Speed(-motorSpeed);
+          md.setM1Speed(-motorSpeed);
       else if (timeYdelay > 0)
-          md.setM2Speed(motorSpeed);
+          md.setM1Speed(motorSpeed);
       // Make we have positive time
       delay(abs(timeYdelay));
-      md.setM2Speed(0);
+      md.setM1Speed(0);
   
       // Dispense after we have moved into position
       dispense();
@@ -515,28 +515,28 @@ void loop()
   int resetYMotor = (0 - currentY) * delayY;
   Serial.print(F("Reset:\t0,0\t"));
   Serial.print(F("("));
-  Serial.print(resetXMotor);
-  Serial.print(F(","));
   Serial.print(resetYMotor);
+  Serial.print(F(","));
+  Serial.print(resetXMotor);
   Serial.println(F(")"));
   
   // Move X motor back to 0
   if (resetXMotor < 0)
-      md.setM1Speed(-motorSpeed);
+      md.setM2Speed(-motorSpeed);
   else if (resetXMotor > 0)
-      md.setM1Speed(motorSpeed);
+      md.setM2Speed(motorSpeed);
   // Make we have positive time
   delay(abs(resetXMotor));
-  md.setM1Speed(0);
+  md.setM2Speed(0);
 
   // Move Y motor back to 0
   if (resetYMotor < 0)
-      md.setM2Speed(-motorSpeed);
+      md.setM1Speed(-motorSpeed);
   else if (resetYMotor > 0)
-      md.setM2Speed(motorSpeed);
+      md.setM1Speed(motorSpeed);
   // Make we have positive time
   delay(abs(resetYMotor));
-  md.setM2Speed(0);
+  md.setM1Speed(0);
   Serial.println(F("Printing Completed"));
 }
 
@@ -556,7 +556,7 @@ void superdispense()
   delay(50);
   digitalWrite(DISPENSE, LOW);
   delay(100);
-  Serial.println(F("SUPER DISPENSE DONE"));
+  Serial.println(F("\tSUPER DISPENSE"));
 }
 
 // *** Manually move the motors through the serial monitor *** //
