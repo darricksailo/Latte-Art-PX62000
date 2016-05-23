@@ -12,7 +12,7 @@ namespace ConvertToBlackAndWhite
 {
     public partial class AboutWindow : Form
     {
-        string[] about1 = new string[10];
+        string[] about1 = new string[11];
         StringBuilder about = new StringBuilder();
         public AboutWindow()
         {
@@ -23,6 +23,7 @@ namespace ConvertToBlackAndWhite
 
         private void showdescription()
         {
+            about1[10] = "v1.3.6\t05/23/16\r\n\u2022 Fixed hiding text boxes when picture is to be displayed\r\n\r\n";
             about1[9] = "v1.3.5\t05/22/16\r\n\u2022 Added stopping delimiter to plain array text for arduino to know when we are at the end of the array\r\n\r\n";
             about1[8] = "v1.3.4\t05/22/16\r\n\u2022 Fixed unnecessary text rendering with the new look up table and plain text toggle feature\r\n\u2022 Fixed textbox scaling\r\n\u2022 Removed unnecessary event handler\r\n\u2022 Fixed v1.3.2 & v1.3.3 release date\r\n\r\n";
             about1[7] = "v1.3.3\t05/21/16\r\n\u2022 Changed default resolution from 50x50 pixels to 25x25 pixels\r\n\r\n";

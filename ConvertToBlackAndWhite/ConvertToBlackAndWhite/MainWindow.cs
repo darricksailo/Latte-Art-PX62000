@@ -35,8 +35,8 @@ namespace ConvertToBlackAndWhite
         public MainWindow()
         {
             InitializeComponent();
-            richCodeTextBox_plain.Visible = true;
             richCodeTextBox_lookup.Visible = true;
+            richCodeTextBox_plain.Visible = true;
             bwPictureBox.Visible = false;
             processedImageButton.Enabled = false;
             textButton.Enabled = false;
@@ -164,8 +164,8 @@ namespace ConvertToBlackAndWhite
                 if (valid)
                 {
                     aStopWatch.Start();
-                    richCodeTextBox_plain.Visible = false;
                     richCodeTextBox_lookup.Visible = false;
+                    richCodeTextBox_plain.Visible = false;
                     bwPictureBox.Visible = true;
                     int imageHeight, imageWidth;
                     int xStart, yStart;
@@ -497,6 +497,7 @@ namespace ConvertToBlackAndWhite
             {
                 bwPictureBox.Image = scaledCImage;
                 richCodeTextBox_lookup.Visible = false;
+                richCodeTextBox_plain.Visible = false;
                 bwPictureBox.Visible = true;
             }
             catch (Exception error)
@@ -535,6 +536,7 @@ namespace ConvertToBlackAndWhite
             {
                 bwPictureBox.Image = scaledOImage;
                 richCodeTextBox_lookup.Visible = false;
+                richCodeTextBox_plain.Visible = false;
                 bwPictureBox.Visible = true;
             }
             catch (Exception error)
