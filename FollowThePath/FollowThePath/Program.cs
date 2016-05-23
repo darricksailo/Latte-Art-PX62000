@@ -159,11 +159,11 @@ namespace FollowThePath
                         {
                             tempY++;
                         }
-                        else if (tempY == (currentY + offset + 1) && tempX != (currentX - 1 - offset))
+                        else if (tempY == (currentY + 1 + offset) && tempX != (currentX - 1 - offset))
                         {
                             tempX--;
                         }
-                        else if (tempX == (currentX - offset - 1))
+                        else if (tempX == (currentX - 1 - offset))
                         {
                             tempY--;
                         }
