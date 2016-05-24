@@ -476,14 +476,14 @@ void loop()
       // Print x & y motor delays
       Serial.print(printNumIndex);
       Serial.print(F(".\t"));
-      Serial.print(minY);
-      Serial.print(F(","));
       Serial.print(minX);
+      Serial.print(F(","));
+      Serial.print(minY);
       Serial.print(F("\t"));
       Serial.print(F("("));
-      Serial.print(timeYdelay);
-      Serial.print(F(", "));
       Serial.print(timeXdelay);
+      Serial.print(F(", "));
+      Serial.print(timeYdelay);
       Serial.print(F(")"));
       
       // If time is negative, that means we need to move in the negative direction
@@ -515,9 +515,9 @@ void loop()
   int resetYMotor = (0 - currentY) * delayY;
   Serial.print(F("Reset:\t0,0\t"));
   Serial.print(F("("));
-  Serial.print(resetYMotor);
-  Serial.print(F(","));
   Serial.print(resetXMotor);
+  Serial.print(F(","));
+  Serial.print(resetYMotor);
   Serial.println(F(")"));
   
   // Move X motor back to 0
