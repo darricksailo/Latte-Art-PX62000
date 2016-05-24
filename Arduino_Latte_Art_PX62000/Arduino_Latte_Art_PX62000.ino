@@ -347,7 +347,7 @@ void loop()
   unsigned char minY;
   int timeXdelay;
   int timeYdelay;
-  unsigned char printNumIndex = 0;
+  int printNumIndex = 0;
 
   // Check if starting point needs to be printed
   // If yes, increment printNumIndex
