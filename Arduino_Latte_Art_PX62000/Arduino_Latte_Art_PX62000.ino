@@ -3,17 +3,17 @@
 #include <avr/pgmspace.h>
 
 DualMC33926MotorShield md;
-const unsigned char DISPENSE = 3; // Pin 3 controls microdispenser
-const unsigned char height = 25;
-const unsigned char width = 25;
-const unsigned char motorSpeed = 110;
-const unsigned char delayX = 150;
-const unsigned char delayY = 150;
-bool tempMatrix[height][width];
+const byte DISPENSE = 3; // Pin 3 controls microdispenser
+const byte HEIGHT = 25;
+const byte WIDTH = 25;
+const byte MOTORSPEED = 110;
+const byte DELAYX = 150;
+const byte DELAYY = 150;
+bool tempMatrix[HEIGHT][WIDTH];
 
 // Store array onto flash memory since it is 32KB as opposed to 2KB SRAM
 //SQUARE
-const bool pictureFirstMatrix[height][width] PROGMEM = {
+const bool pictureFirstMatrix[HEIGHT][WIDTH] PROGMEM = {
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
   {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0}, 
@@ -42,7 +42,7 @@ const bool pictureFirstMatrix[height][width] PROGMEM = {
 };
 
 //TRIANGLE
-const bool pictureSecondMatrix[height][width] PROGMEM = {
+const bool pictureSecondMatrix[HEIGHT][WIDTH] PROGMEM = {
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
@@ -71,7 +71,7 @@ const bool pictureSecondMatrix[height][width] PROGMEM = {
 };
 
 //SMILEY FACE
-const bool pictureThirdMatrix[height][width] PROGMEM = {
+const bool pictureThirdMatrix[HEIGHT][WIDTH] PROGMEM = {
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
   {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0}, 
@@ -100,7 +100,7 @@ const bool pictureThirdMatrix[height][width] PROGMEM = {
 };
 
 //STAR
-const bool pictureFourthMatrix[height][width] PROGMEM = {
+const bool pictureFourthMatrix[HEIGHT][WIDTH] PROGMEM = {
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
@@ -129,7 +129,7 @@ const bool pictureFourthMatrix[height][width] PROGMEM = {
 };
 
 //DEATHLY HALLOWS SYMBOL
-const bool pictureFifthMatrix[height][width] PROGMEM = {
+const bool pictureFifthMatrix[HEIGHT][WIDTH] PROGMEM = {
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
@@ -169,8 +169,8 @@ void setup()
   // setSpeeds(int m1Speed, int m2Speed)
   md.setSpeeds(0, 0);                             // Set both motors to stop moving
 
-  pinMode(DISPENSE, OUTPUT);
   digitalWrite(DISPENSE, LOW);
+  pinMode(DISPENSE, OUTPUT);
 }
 
 void loop()
@@ -190,24 +190,24 @@ void loop()
     if (startInput == "move")
     {
       Serial.println(startInput);
-      moveMotors();
+      MoveMotors();
       Serial.println();
     }
     else if (startInput == "dispense")
     {
       Serial.println(startInput);
-      for (int i = 0; i < 50; i++)
+      for (byte i = 0; i < 50; i++)
       {
-        dispense();
+        Dispense();
       }
       Serial.println(F("Dispense Done\n"));
     }
     else if (startInput == "superdispense")
     {
       Serial.println(startInput);
-      for (int i = 0; i < 200; i++)
+      for (byte i = 0; i < 200; i++)
       {
-        superdispense();
+        Superdispense();
       }
       Serial.println(F("SUPERDISPENSE DONE\n"));
     }
@@ -234,8 +234,7 @@ void loop()
     }
   }
 
-  int printNum = 0;
-  String tempCustomValue;
+  word printNum = 0;
   if (selection == '1')
     Serial.println(F("*** Printing square ***"));
   else if (selection == '2')
@@ -248,6 +247,7 @@ void loop()
     Serial.println(F("*** Printing deathly hallows symbol ***"));
   else if (selection == '6')
   {
+    String tempCustomValue;
     Serial.println(F("Please enter custom image's array into serial monitor"));
     Serial.println(F("The picture should be a 25x25 array or 625 characters"));
     while (Serial.available() == 0);
@@ -277,10 +277,10 @@ void loop()
     delay(1000);
     Serial.println(F("Printing is starting"));
     
-    int customNum = 0;
-    for (int i = 0; i < width; i++)
+    word customNum = 0;
+    for (byte i = 0; i < WIDTH; i++)
     {
-      for (int j = 0; j < height; j++)
+      for (byte j = 0; j < HEIGHT; j++)
       {
         if (tempCustomValue.charAt(customNum) == '0')
           tempMatrix[i][j] = 0;
@@ -298,15 +298,16 @@ void loop()
       }
       Serial.println();
     }
+    tempCustomValue = "";
   }
   
   if (selection != '6')
   {
     delay(1000);
     Serial.println(F("Printing is starting"));
-    for (int i = 0; i < width; i++)
+    for (byte i = 0; i < WIDTH; i++)
     {
-        for (int j = 0; j < height; j++)
+        for (byte j = 0; j < HEIGHT; j++)
         {
             if (selection == '1')
                 tempMatrix[i][j] = pgm_read_byte_near(&pictureFirstMatrix[i][j]);
@@ -332,22 +333,22 @@ void loop()
   Serial.println(printNum);
   delay(1000);
 
-  unsigned char currentX = 0;
-  unsigned char currentY = 0;
+  byte currentX = 0;
+  byte currentY = 0;
   int tempX = 0;
   int tempY = 0;
-  unsigned char xFound[24];
-  unsigned char yFound[24];
-  unsigned char index = 0;
-  unsigned char found = 0;
-  unsigned char offset = 0;
-  double distance[24];
-  double minDistance;
-  unsigned char minX;
-  unsigned char minY;
+  byte xFound[24];
+  byte yFound[24];
+  byte index = 0;
+  byte found = 0;
+  byte offset = 0;
+  float distance[24];
+  float minDistance;
+  byte minX;
+  byte minY;
   int timeXdelay;
   int timeYdelay;
-  int printNumIndex = 0;
+  word printNumIndex = 0;
 
   // Check if starting point needs to be printed
   // If yes, increment printNumIndex
@@ -358,7 +359,7 @@ void loop()
       printNumIndex++;
       printNum--;
       Serial.print(F("1.\t0,0\t(0,0)\t"));
-      dispense();
+      Dispense();
   }
 
   // Keep iterating until all printing is done
@@ -398,10 +399,10 @@ void loop()
           tempX = currentX - 1 - offset;
           tempY = currentY - 1 - offset;
           // Search the adjacent squares of the matrix to current x & y coordinate location
-          for (int i = 0; i < 8 * (offset + 1); i++)
+          for (byte i = 0; i < 8 * (offset + 1); i++)
           {
               // Make sure that we do not go out of bounds
-              if (tempX >= 0 && tempY >= 0 && tempX < width && tempY < height)
+              if (tempX >= 0 && tempY >= 0 && tempX < WIDTH && tempY < HEIGHT)
               {
                   // If we found a 1, add the x & y coordinate to the array
                   // Increment the number of 1's found
@@ -437,7 +438,7 @@ void loop()
       }
 
       // Calculate the distance from the found 1's compared to the current x and y coordinate
-      for (int i = 0; i < found; i++)
+      for (byte i = 0; i < found; i++)
       {
           distance[i] = sqrt(pow(currentX - xFound[i], 2) + pow(currentY - yFound[i], 2));
       }
@@ -446,7 +447,7 @@ void loop()
       minDistance = distance[0];
       minX = xFound[0];
       minY = yFound[0];
-      for (int i = 1; i < found; i++)
+      for (byte i = 1; i < found; i++)
       {
           if (minDistance > distance[i])
           {
@@ -457,8 +458,8 @@ void loop()
       }
 
       // Store the amount of delay for x and y direction to get to that point
-      timeXdelay = (minX - currentX) * delayX;
-      timeYdelay = (minY - currentY) * delayY;
+      timeXdelay = (minX - currentX) * DELAYX;
+      timeYdelay = (minY - currentY) * DELAYY;
 
       // Reset the matrix square printed to 0 so we don't accidentally print it again
       tempMatrix[minY][minX] = 0;
@@ -489,9 +490,9 @@ void loop()
       // If time is negative, that means we need to move in the negative direction
       // X direction motor
       if (timeXdelay < 0)
-          md.setM2Speed(-motorSpeed);
+          md.setM2Speed(-MOTORSPEED);
       else if (timeXdelay > 0)
-          md.setM2Speed(motorSpeed);
+          md.setM2Speed(MOTORSPEED);
       // Make we have positive time
       delay(abs(timeXdelay));
       md.setM2Speed(0);
@@ -499,20 +500,20 @@ void loop()
       // If time is negative, that means we need to move in the negative direction
       // Y direction motor
       if (timeYdelay < 0)
-          md.setM1Speed(-motorSpeed);
+          md.setM1Speed(-MOTORSPEED);
       else if (timeYdelay > 0)
-          md.setM1Speed(motorSpeed);
+          md.setM1Speed(MOTORSPEED);
       // Make we have positive time
       delay(abs(timeYdelay));
       md.setM1Speed(0);
   
       // Dispense after we have moved into position
-      dispense();
+      Dispense();
   }
 
   // Calculate how far we are from 0,0
-  int resetXMotor = (0 - currentX) * delayX;
-  int resetYMotor = (0 - currentY) * delayY;
+  int resetXMotor = (0 - currentX) * DELAYX;
+  int resetYMotor = (0 - currentY) * DELAYY;
   Serial.print(F("Reset:\t0,0\t"));
   Serial.print(F("("));
   Serial.print(resetXMotor);
@@ -522,18 +523,18 @@ void loop()
   
   // Move X motor back to 0
   if (resetXMotor < 0)
-      md.setM2Speed(-motorSpeed);
+      md.setM2Speed(-MOTORSPEED);
   else if (resetXMotor > 0)
-      md.setM2Speed(motorSpeed);
+      md.setM2Speed(MOTORSPEED);
   // Make we have positive time
   delay(abs(resetXMotor));
   md.setM2Speed(0);
 
   // Move Y motor back to 0
   if (resetYMotor < 0)
-      md.setM1Speed(-motorSpeed);
+      md.setM1Speed(-MOTORSPEED);
   else if (resetYMotor > 0)
-      md.setM1Speed(motorSpeed);
+      md.setM1Speed(MOTORSPEED);
   // Make we have positive time
   delay(abs(resetYMotor));
   md.setM1Speed(0);
@@ -541,7 +542,7 @@ void loop()
 }
 
 // *** Dispense Caramel *** //
-void dispense()
+void Dispense()
 {
   digitalWrite(DISPENSE, HIGH);
   delay(250);
@@ -550,7 +551,7 @@ void dispense()
   Serial.println(F("\tDISPENSE"));
 }
 
-void superdispense()
+void Superdispense()
 {
   digitalWrite(DISPENSE, HIGH);
   delay(50);
@@ -560,7 +561,7 @@ void superdispense()
 }
 
 // *** Manually move the motors through the serial monitor *** //
-void moveMotors()
+void MoveMotors()
 {
   Serial.println(F("Enter 1 or 2 and then P or N"));
   Serial.println(F("1P. Y Motor - right"));
@@ -579,7 +580,7 @@ void moveMotors()
 
   Serial.println(F("Enter a movement delay"));
   String selection2;
-  unsigned int moveDelay;
+  word moveDelay;
   while (selection2.toInt() <= 0)
   {
     while (Serial.available() == 0);
