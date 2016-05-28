@@ -577,6 +577,7 @@ void MoveMotors()
       selection = Serial.readString();
     }
   }
+  Serial.println(selection);
 
   Serial.println(F("Enter a movement delay"));
   String selection2;
