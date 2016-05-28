@@ -8,6 +8,11 @@ A program, written in C#, was created to take in an image, crop to center with a
 
 Our Arduino Uno uses the binary lookup table to determine when and where the dispenser needs to dispense the liquid to. We also use a form of a shortest path algorithm for a more efficient and quicker print as opposed to how an inkjet printer would print (the print head would move back and forth while the paper slides out).
 
+#### Machine Frame/Structure
+![Latte Art PX62000 Board1](http://darrickteng.github.io/Images/Latte-Art-PX62000/Board1.jpg)
+![Latte Art PX62000 Board2](http://darrickteng.github.io/Images/Latte-Art-PX62000/Board2.jpg)
+![Latte Art PX62000 Board3](http://darrickteng.github.io/Images/Latte-Art-PX62000/Board3.jpg)
+
 #### Main Menu
 ![Latte Art PX62000 Main Menu](http://darrickteng.github.io/Images/Latte-Art-PX62000/MainMenu.png)
 
